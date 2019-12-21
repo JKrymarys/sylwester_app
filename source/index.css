@@ -4,7 +4,7 @@ body {
     font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
     font-size: 16px;
     margin: 0; padding: 0;
-    background: white;
+    background: black;
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
@@ -13,5 +13,5 @@ body {
 }
 
 .drawer {
-    background: white;
+    background: black;
 }
