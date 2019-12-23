@@ -19,7 +19,7 @@ button {
     background: transparent;
     border: none;
     border-radius: 8px;
-    color: rgba(240,240,24ls0,0.5);
+    color: rgba(240,240,240,0.5);
     -webkit-transition: all .3s; /* Safari */
     transition: all .3s;
 }
