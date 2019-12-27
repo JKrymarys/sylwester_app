@@ -1,1 +1,1538 @@
-﻿zuix.bundle([{componentId:"_res/script/script-605580544",view:null,css:null,controller:"if ('serviceWorker' in navigator) {\n    const p = navigator.serviceWorker\n        .register('./sw.js')\n        .then(reg => console.log('PWA service-worker ready.', reg))\n        .catch(err => console.error('Could not load service-worker.', err));\n}\n",using:"./service-worker.js"},{componentId:"layout/header",view:"<div class=\"header\">\n  <div class=\"profile pulse\">\n    <img alt=\"Profile Icon\" src=\"images/profile_icon.png\">\n  </div>\n  <div data-ui-field=\"header-box\" layout=\"row center-center\">\n    <div class=\"title\">\n      Home\n    </div>\n    <div data-ui-load=\"shared/input_box\"></div>\n    <div class=\"title\">\n      Notifications\n    </div>\n    <div class=\"title\">\n      Messages\n    </div>\n  </div>\n</div>\n<div data-ui-field=\"header-tools\">\n  <div class=\"topics\" data-ui-load=\"@lib/controllers/view_pager\" data-ui-options=\"options.topicIndicator\">\n    <div>\n      Top Stories\n    </div>\n    <div>\n      World\n    </div>\n    <div>\n      Europe\n    </div>\n    <div>\n      Travel\n    </div>\n  </div>\n</div>\n",css:". {\n  position: fixed;\n  top:0;\n  left:0;\n  right:0;\n  height:auto;\n  background: rgba(240,240,240,0.97);\n  border-bottom: solid 1px rgba(0,0,0,0.25);\n  box-shadow: 0 6px 2px -2px rgba(100,100,100,0.25);\n  z-index: 100;\n}\n\n.header {\n  height: 56px;\n  max-height: 56px;\n}\n\n.title {\n  position: absolute;\n  top: 12px;\n  left: 80px;\n  font-size: 180%;\n}\n\n.profile {\n  position: absolute;\n  left: 20px; top: 8px;\n  width: 42px;\n  height: 42px;\n  background: #f5f8fa;\n  border-radius: 50%;\n  border: solid 1px #00aced;\n  overflow: hidden;\n  cursor: pointer;\n}\n.profile img {\n  margin-left: -2px;\n  height: 44px;\n}\n\n.topics {\n  width: 100%;\n  height:40px;\n}\n.topics div {\n  font-size: 16px;\n  height:36px;\n  min-width: 96px;\n  text-align: center;\n  vertical-align: middle;\n  line-height: 36px;\n  border-bottom: solid 4px transparent;\n  cursor: pointer;\n}\n\n.active {\n  color: initial;\n  font-weight: bold;\n  border-bottom: solid 4px #00aced !important;\n}\n\n[data-ui-field=\"header-box\"] {\n  padding-left: 72px;\n  padding-right: 16px;\n  height: 100%;\n}\n\n/* Pulse Animation from https://codepen.io/olam/pen/zcqea */\n\n.pulse {\n  box-shadow: 0 0 0 rgba(204,169,44, 0.4);\n  animation: pulse 2s infinite;\n}\n.pulse:hover {\n  animation: none;\n}\n\n@-webkit-keyframes pulse {\n  0% {\n    -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);\n  }\n  70% {\n    -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0);\n  }\n  100% {\n    -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);\n  }\n}\n@keyframes pulse {\n  0% {\n    -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);\n    box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);\n  }\n  70% {\n    -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);\n    box-shadow: 0 0 0 10px rgba(204,169,44, 0);\n  }\n  100% {\n    -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);\n    box-shadow: 0 0 0 0 rgba(204,169,44, 0);\n  }\n}\n",controller:function(){}},{componentId:"_res/style/style-1784725062",view:null,css:"/* CSS files add styling rules to your content */\n\nbody {\n    font-family: \"Benton Sans\", \"Helvetica Neue\", helvetica, arial, sans-serif;\n    font-size: 16px;\n    margin: 0; padding: 0;\n    background: white;\n    -webkit-user-select:none;\n    -moz-user-select:none;\n    -ms-user-select:none;\n    user-select:none;\n    overscroll-behavior-y: contain;\n}\n\n.drawer {\n    background: white;\n}\n",controller:null,using:"./index.css"},{componentId:"layout/footer",view:"<button class=\"active\">\n  <i class=\"material-icons md-48\">home</i>\n</button>\n<button>\n  <i class=\"material-icons md-48\">search</i>\n</button>\n<button>\n  <i class=\"material-icons md-48\">notifications</i>\n</button>\n<button>\n  <i class=\"material-icons md-48\">info</i>\n</button>\n",css:". {\n    position: fixed;\n    left:0; bottom:0; right: 0;\n    height: 56px;\n    background: rgba(240,240,240,0.97);\n    border-top: solid 1px rgba(0,0,0,0.25);\n    box-shadow: 0 -6px 2px -2px rgba(100,100,100,0.25);\n    text-align: center;\n    z-index: 100;\n    overflow: hidden;\n}\n\nbutton {\n    padding: 12px;\n    max-height: 56px;\n    margin-left: 8px;\n    margin-right: 8px;\n    background: transparent;\n    border: none;\n    border-radius: 8px;\n    color: rgba(0,0,0,0.5);\n    -webkit-transition: all .3s; /* Safari */\n    transition: all .3s;\n}\nbutton:hover {\n    background: rgba(255,255,255,0.25);\n}\nbutton:focus {outline:0;}\nbutton i {font-size: 32px !important;}\n\n.active {\n    transform: scale(1.2);\n    color: #0085b6;\n    text-shadow:\n            1px 1px 0 #e1e8ed,\n            -1px -1px 0 #e1e8ed,\n            1px -1px 0 #e1e8ed,\n            -1px 1px 0 #e1e8ed,\n            1px 1px 0 #e1e8ed;\n}\n",controller:function(){}},{componentId:"_res/style/style--1101994688",view:null,css:"/**\n * Flex layout attribute\n * HTML layout helper based on CSS flexbox specification.\n * \n * VERSION: v1.0.3\n * DATE:    2016-06-21\n * URL:     http://progressivered.com/fla/\n * AUTHOR:  Stefan Kovac | stef@progressivered.com | http://progressivered.com/\n * LICENSE: MIT \n */\n \nhtml{box-sizing:border-box}*,:after,:before{box-sizing:inherit}[layout]{display:-ms-flexbox;display:flex}[layout*=column],[layout*=row]{width:100%;max-width:100%}[layout^=row]{-ms-flex-direction:row;flex-direction:row}[layout^=column]{-ms-flex-direction:column;flex-direction:column}[layout*=row][layout*=reverse]{-ms-flex-direction:row-reverse;flex-direction:row-reverse}[layout*=column][layout*=reverse]{-ms-flex-direction:column-reverse;flex-direction:column-reverse}[layout*=columns],[layout*=rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}[layout=none]{-ms-flex:none;flex:none}[layout*=column][layout*=top-],[layout*=row][layout*=-left]{-ms-flex-pack:start;justify-content:flex-start}[layout*=column][layout*=center-],[layout*=row][layout*=-center],[layout~=centered]{-ms-flex-pack:center;justify-content:center}[layout*=column][layout*=bottom-],[layout*=row][layout*=-right]{-ms-flex-pack:end;justify-content:flex-end}[layout*=column][layout*=spread-],[layout*=row][layout*=-spread]{-ms-flex-pack:distribute;justify-content:space-around}[layout*=column][layout*=justify-],[layout*=row][layout*=-justify]{-ms-flex-pack:justify;justify-content:space-between}[layout*=column][layout*=-left],[layout*=row][layout*=top-]{-ms-flex-align:start;-ms-grid-row-align:flex-start;align-items:flex-start}[layout*=column][layout*=-center],[layout*=row][layout*=center-],[layout~=centered]{-ms-flex-align:center;-ms-grid-row-align:center;align-items:center}[layout*=column][layout*=-right],[layout*=row][layout*=bottom-]{-ms-flex-align:end;-ms-grid-row-align:flex-end;align-items:flex-end}[layout*=column][layout*=-stretch],[layout*=row][layout*=stretch-]{-ms-flex-align:stretch;-ms-grid-row-align:stretch;align-items:stretch}[layout*=columns][layout*=-left],[layout*=rows][layout*=top-]{-ms-flex-line-pack:start;align-content:flex-start}[layout*=columns][layout*=-right],[layout*=rows][layout*=bottom-]{-ms-flex-line-pack:end;align-content:flex-end}[layout*=columns][layout*=-center],[layout*=rows][layout*=center-]{-ms-flex-line-pack:center;align-content:center}[layout*=columns][layout*=-justify],[layout*=rows][layout*=justify-]{-ms-flex-line-pack:justify;align-content:space-between}[layout*=columns][layout*=-spread],[layout*=rows][layout*=spread-]{-ms-flex-line-pack:distribute;align-content:space-around}[layout*=columns][layout*=-stretch],[layout*=rows][layout*=stretch-]{-ms-flex-line-pack:stretch;align-content:stretch}@media (-ms-high-contrast:none),screen and (-ms-high-contrast:active){[layout*=column]:not([layout*=row])>*{max-width:auto}[layout*=column][self*=top]{height:auto!important}[self~=size-]>*{height:auto}}[layout*=column]:not([layout*=row]) [self*=left],[layout*=row]:not([layout*=column]) [self*=top]{-ms-flex-item-align:start;align-self:flex-start}[self~=center]{-ms-flex-item-align:center;align-self:center}[layout*=column]:not([layout*=row]) [self*=right],[layout*=row]:not([layout*=column]) [self*=bottom]{-ms-flex-item-align:end;align-self:flex-end}[self*=stretch]{-ms-flex-item-align:stretch;align-self:stretch}[layout][self*=center]{margin-left:auto;margin-right:auto}[layout][self*=right]{margin-right:0}[layout][self*=left]{margin-left:0}[layout*=column] [self*=bottom]{margin-top:auto}[layout*=column] [self*=top]{margin-bottom:auto}[layout*=row] [self*=left]{margin-right:auto}[layout*=row] [self*=right]{margin-left:auto}[self~=size-1of5]{width:20%}[self~=size-1of4]{width:25%}[self~=size-1of3]{width:33.33333%}[self~=size-2of5]{width:40%}[self~=size-1of2]{width:50%}[self~=size-3of5]{width:60%}[self~=size-2of3]{width:66.6666%}[self~=size-3of4]{width:75%}[self~=size-4of5]{width:80%}[self~=size-1of1]{width:100%}[layout*=column][layout*=stretch-]>:not([self*=size-]),[layout*=row][layout*=-stretch]>:not([self*=size-]),[self~=size-x1]{-ms-flex:1 0 0%!important;flex:1 0 0%!important}[self~=size-x2]{-ms-flex:2 0 0%!important;flex:2 0 0%!important}[self~=size-x3]{-ms-flex:3 0 0%!important;flex:3 0 0%!important}[self~=size-x4]{-ms-flex:4 0 0%!important;flex:4 0 0%!important}[self~=size-x5]{-ms-flex:5 0 0%!important;flex:5 0 0%!important}[self~=size-x6]{-ms-flex:6 0 0%!important;flex:6 0 0%!important}[self~=size-x7]{-ms-flex:7 0 0%!important;flex:7 0 0%!important}[self~=size-x8]{-ms-flex:8 0 0%!important;flex:8 0 0%!important}[self~=size-x9]{-ms-flex:9 0 0%!important;flex:9 0 0%!important}[self*=size-auto]{-ms-flex:1 1 auto;flex:1 1 auto}[self*=size-x0]{-ms-flex:0 0 auto;flex:0 0 auto}[self~=size-xxlarge]{max-width:1440px;width:100%}[self~=size-xlarge]{max-width:1200px;width:100%}[self~=size-large]{max-width:960px;width:100%}[self~=size-larger]{max-width:840px;width:100%}[self~=size-medium]{max-width:720px;width:100%}[self~=size-smaller]{max-width:600px;width:100%}[self~=size-small]{max-width:480px;width:100%}[self~=size-xsmall]{max-width:360px;width:100%}[self~=size-xxsmall]{max-width:240px;width:100%}[self*=size-x]:not([self*=small]):not([self*=large]){-ms-flex-negative:1;flex-shrink:1}[self~=first]{-ms-flex-order:-1;order:-1}[self~=order-1]{-ms-flex-order:1;order:1}[self~=order-2]{-ms-flex-order:2;order:2}[self~=order-3]{-ms-flex-order:3;order:3}[self~=last]{-ms-flex-order:999;order:999}[layout*=column]:not([layout*=row])>*{-ms-flex-negative:0;flex-shrink:0;-ms-flex-preferred-size:auto;flex-basis:auto}@media screen and (max-width:64em){[layout*=lg-row]{-ms-flex-direction:row;flex-direction:row}[layout*=lg-column]{-ms-flex-direction:column;flex-direction:column}[layout*=lg-columns],[layout*=lg-rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}}@media screen and (max-width:52em){[layout*=md-row]{-ms-flex-direction:row;flex-direction:row}[layout*=md-column]{-ms-flex-direction:column;flex-direction:column}[layout*=md-columns],[layout*=md-rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}}@media screen and (max-width:40em){[layout*=sm-row]{-ms-flex-direction:row;flex-direction:row}[layout*=sm-column]{-ms-flex-direction:column;flex-direction:column}[layout*=sm-columns],[layout*=sm-rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}}@media screen and (max-width:64em){[self*=lg-full]{-ms-flex:1 1 100%!important;flex:1 1 100%!important;width:100%;max-width:100%}[self*=lg-half]{-ms-flex:1 1 50%!important;flex:1 1 50%!important;width:50%;max-width:50%}[self~=lg-first]{-ms-flex-order:-1;order:-1}[self~=lg-last]{-ms-flex-order:999;order:999}[self~=lg-hide]{display:none}[self~=lg-show]{display:inherit}}@media screen and (max-width:52em){[self*=md-full]{-ms-flex:1 1 100%!important;flex:1 1 100%!important;width:100%;max-width:100%}[self*=md-half]{-ms-flex:1 1 50%!important;flex:1 1 50%!important;width:50%;max-width:50%}[self~=md-first]{-ms-flex-order:-1;order:-1}[self~=md-last]{-ms-flex-order:999;order:999}[self~=md-hide]{display:none}[self~=md-show]{display:inherit}}@media screen and (max-width:40em){[self*=sm-full]{-ms-flex:1 1 100%!important;flex:1 1 100%!important;width:100%;max-width:100%}[self*=sm-half]{-ms-flex:1 1 50%!important;flex:1 1 50%!important;width:50%;max-width:50%}[self~=sm-first]{-ms-flex-order:-1;order:-1}[self~=sm-last]{-ms-flex-order:999;order:999}[self~=sm-hide]{display:none}[self~=sm-show]{display:inherit}}",controller:null,using:"//zuixjs.github.io/zkit/css/flex-layout-attribute.min.css"},{componentId:"https://zuixjs.github.io/zkit/lib/controllers/drawer_layout",controller:function(t){function o(){j.visibility("initial").css("left",0).get().focus(),k&&(j.find("a").one("click",function(){s()}),I.css("opacity","initial"),I.show()),v||(v=!0,t.trigger("drawer:open",{smallScreen:k}))}function s(){k&&(g(function(){v||j.visibility("hidden")}),j.css("left",-S+"px"),I.hide(),v&&(v=!1,t.trigger("drawer:close",{smallScreen:k}))),v=!1,j.find("a").off("click")}function r(){v?s():o()}function c(){return v}function p(H){let L=H.x;0<L&&L<=S-E&&(L=-S+L+E,"hidden"===j.visibility()&&j.visibility("initial"),j.css("left",L+"px"),"none"===I.display()&&I.show(),I.css("opacity",(S+L)/S))}function u(){const H=document.body.clientWidth;H<C||-1===C?((!k||_)&&(k=!0,z=!1,f()),s()):(k||_)&&(k&&(I.hide(),v&&s()),k=!1,z=!0,f(),o())}function f(){t.trigger("layout:change",{smallScreen:k,drawerLocked:z})}function m(){if(!T){T=!0;const H="ease .15s";j.css({"transition-property":"left","-webkit-transition":H,"-moz-transition":H,"-ms-transition":H,"-o-transition":H,transition:H}),I.css({"transition-property":"opacity","-webkit-transition":H,"-moz-transition":H,"-ms-transition":H,"-o-transition":H,transition:H})}}function h(){if(T){T=!1;const H="none";j.css({"-webkit-transition":H,"-moz-transition":H,"-ms-transition":H,"-o-transition":H,transition:H}),I.css({"-webkit-transition":H,"-moz-transition":H,"-ms-transition":H,"-o-transition":H,transition:H})}}function g(H){j.one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",function(){H()})}let v=!0,z=!1,k=!1,T=!1,_=!0,I=null,j=null,S=280,C=960,E=0;t.init=function(){let H=t.view();if(this.options().html=!1,this.options().css=!1,!isNaN(this.options().drawerWidth))S=parseInt(this.options().drawerWidth);else{const L=parseInt(H.attr("data-o-width"));isNaN(L)||(S=L)}if(!isNaN(this.options().autoHideWidth))C=parseInt(this.options().autoHideWidth);else{const L=parseInt(H.attr("data-o-hide-width"));isNaN(L)||(C=L)}},t.create=function(){j=t.view(),I=zuix.$(document.createElement("div")),I.css({position:"fixed",top:0,left:0,bottom:0,right:0,"z-index":100,"-ms-touch-action":"none","touch-action":"none","background-color":"rgba(0, 0, 0, 0.5)"}).on("click",function(){z||s()}).hide(),j.parent().append(I.get()),j.css({position:"fixed","overflow-y":"auto",left:0,width:S+"px",top:0,bottom:0,"z-index":101,"-ms-touch-action":"none","touch-action":"none","-webkit-box-shadow":"8px 0 6px -6px rgba(0,0,0,0.25)","-moz-box-shadow":"8px 0 6px -6px rgba(0,0,0,0.25)","box-shadow":"8px 0 6px -6px rgba(0,0,0,0.25)"}).attr("tabindex",0);let H=!1;zuix.load("@lib/controllers/gesture_helper",{view:document.documentElement,on:{"gesture:touch":function(L,A){z||(m(),E=v&&A.startX<S?S-A.startX:0)},"gesture:release":function(L,A){z||H&&(H=!1,m(),0<A.velocity?o():s())},"gesture:pan":function(L,A){z||"horizontal"!==A.scrollIntent()||((H||v)&&A.x<S||!H&&50>A.x)&&(!H&&(H=!0),m(),p(A),h())}}}),t.expose("toggle",function(){m(),r()}),t.expose("open",function(){m(),o()}),t.expose("close",function(){m(),s()}),t.expose("isOpen",c),t.expose("lock",function(L){return null==L?z:void(z=L)}),j.on("keydown",function(L){L=L||window.event,27===L.keyCode&&s()}),u(),_=!1,window.addEventListener("resize",function(){u()})}}},{componentId:"https://zuixjs.github.io/zkit/lib/controllers/gesture_helper",view:"\n  <meta charset=\"utf-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n\n  <title>HTML PWA</title>\n  <meta name=\"description\" content=\"HTML Progressive Web App made with zUIx.js\">\n\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\n  <!-- Disable tap highlight on IE -->\n  <meta name=\"msapplication-tap-highlight\" content=\"no\">\n\n  <!-- Progressive Web App -->\n  <meta name=\"theme-color\" content=\"#f5f8fa\">\n  <link rel=\"manifest\" href=\"manifest.json\">\n\n  <!-- Add to homescreen for Chrome on Android -->\n  <meta name=\"mobile-web-app-capable\" content=\"yes\">\n  <link rel=\"icon\" sizes=\"192x192\" href=\"images/icons/desktop/android-chrome-192x192.png\">\n  <link rel=\"icon\" sizes=\"512x512\" href=\"images/icons/desktop/android-chrome-512x512.png\">\n\n  <!-- Add to homescreen for Safari on iOS -->\n  <meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n  <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\">\n  <meta name=\"apple-mobile-web-app-title\" content=\"A zUIx website\">\n  <link rel=\"apple-touch-icon-precomposed\" href=\"images/icons/desktop/apple-touch-icon.png\">\n  <link rel=\"mask-icon\" href=\"images/icons/desktop/safari-pinned-tab.svg\" color=\"#5bbad5\">\n\n  <!-- Tile color for Windows -->\n  <meta name=\"msapplication-TileImage\" content=\"images/icons/desktop/mstile-150x150.png\">\n  <meta name=\"msapplication-TileColor\" content=\"#ffc40d\">\n\n  <!-- Place favicon.ico in the root directory -->\n  <link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"images/icons/desktop/favicon-32x32.png\">\n  <link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"images/icons/desktop/favicon-16x16.png\">\n\n  <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->\n  <!--\n  <link rel=\"canonical\" href=\"http://www.example.com/\">\n  -->\n\n  <!-- Material Design Icons -->\n  <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/icon?family=Material+Icons\">\n\n  <!-- import zUIx library (v 0.4.9-54) -->\n  <script src=\"js/zuix.min.js\"></script>\n  <script src=\"js/zuix-bundler.min.js\"></script>\n\n  <!-- main app script -->\n  <script src=\"index.js\" defer=\"\"></script>\n\n<script type=\"text/javascript\" id=\"script-605580544\">if ('serviceWorker' in navigator) {\n    const p = navigator.serviceWorker\n        .register('./sw.js')\n        .then(reg => console.log('PWA service-worker ready.', reg))\n        .catch(err => console.error('Could not load service-worker.', err));\n}\n</script><style type=\"text/css\" id=\"style--1101994688\">/**\n * Flex layout attribute\n * HTML layout helper based on CSS flexbox specification.\n * \n * VERSION: v1.0.3\n * DATE:    2016-06-21\n * URL:     http://progressivered.com/fla/\n * AUTHOR:  Stefan Kovac | stef@progressivered.com | http://progressivered.com/\n * LICENSE: MIT \n */\n \nhtml{box-sizing:border-box}*,:after,:before{box-sizing:inherit}[layout]{display:-ms-flexbox;display:flex}[layout*=column],[layout*=row]{width:100%;max-width:100%}[layout^=row]{-ms-flex-direction:row;flex-direction:row}[layout^=column]{-ms-flex-direction:column;flex-direction:column}[layout*=row][layout*=reverse]{-ms-flex-direction:row-reverse;flex-direction:row-reverse}[layout*=column][layout*=reverse]{-ms-flex-direction:column-reverse;flex-direction:column-reverse}[layout*=columns],[layout*=rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}[layout=none]{-ms-flex:none;flex:none}[layout*=column][layout*=top-],[layout*=row][layout*=-left]{-ms-flex-pack:start;justify-content:flex-start}[layout*=column][layout*=center-],[layout*=row][layout*=-center],[layout~=centered]{-ms-flex-pack:center;justify-content:center}[layout*=column][layout*=bottom-],[layout*=row][layout*=-right]{-ms-flex-pack:end;justify-content:flex-end}[layout*=column][layout*=spread-],[layout*=row][layout*=-spread]{-ms-flex-pack:distribute;justify-content:space-around}[layout*=column][layout*=justify-],[layout*=row][layout*=-justify]{-ms-flex-pack:justify;justify-content:space-between}[layout*=column][layout*=-left],[layout*=row][layout*=top-]{-ms-flex-align:start;-ms-grid-row-align:flex-start;align-items:flex-start}[layout*=column][layout*=-center],[layout*=row][layout*=center-],[layout~=centered]{-ms-flex-align:center;-ms-grid-row-align:center;align-items:center}[layout*=column][layout*=-right],[layout*=row][layout*=bottom-]{-ms-flex-align:end;-ms-grid-row-align:flex-end;align-items:flex-end}[layout*=column][layout*=-stretch],[layout*=row][layout*=stretch-]{-ms-flex-align:stretch;-ms-grid-row-align:stretch;align-items:stretch}[layout*=columns][layout*=-left],[layout*=rows][layout*=top-]{-ms-flex-line-pack:start;align-content:flex-start}[layout*=columns][layout*=-right],[layout*=rows][layout*=bottom-]{-ms-flex-line-pack:end;align-content:flex-end}[layout*=columns][layout*=-center],[layout*=rows][layout*=center-]{-ms-flex-line-pack:center;align-content:center}[layout*=columns][layout*=-justify],[layout*=rows][layout*=justify-]{-ms-flex-line-pack:justify;align-content:space-between}[layout*=columns][layout*=-spread],[layout*=rows][layout*=spread-]{-ms-flex-line-pack:distribute;align-content:space-around}[layout*=columns][layout*=-stretch],[layout*=rows][layout*=stretch-]{-ms-flex-line-pack:stretch;align-content:stretch}@media (-ms-high-contrast:none),screen and (-ms-high-contrast:active){[layout*=column]:not([layout*=row])>*{max-width:auto}[layout*=column][self*=top]{height:auto!important}[self~=size-]>*{height:auto}}[layout*=column]:not([layout*=row]) [self*=left],[layout*=row]:not([layout*=column]) [self*=top]{-ms-flex-item-align:start;align-self:flex-start}[self~=center]{-ms-flex-item-align:center;align-self:center}[layout*=column]:not([layout*=row]) [self*=right],[layout*=row]:not([layout*=column]) [self*=bottom]{-ms-flex-item-align:end;align-self:flex-end}[self*=stretch]{-ms-flex-item-align:stretch;align-self:stretch}[layout][self*=center]{margin-left:auto;margin-right:auto}[layout][self*=right]{margin-right:0}[layout][self*=left]{margin-left:0}[layout*=column] [self*=bottom]{margin-top:auto}[layout*=column] [self*=top]{margin-bottom:auto}[layout*=row] [self*=left]{margin-right:auto}[layout*=row] [self*=right]{margin-left:auto}[self~=size-1of5]{width:20%}[self~=size-1of4]{width:25%}[self~=size-1of3]{width:33.33333%}[self~=size-2of5]{width:40%}[self~=size-1of2]{width:50%}[self~=size-3of5]{width:60%}[self~=size-2of3]{width:66.6666%}[self~=size-3of4]{width:75%}[self~=size-4of5]{width:80%}[self~=size-1of1]{width:100%}[layout*=column][layout*=stretch-]>:not([self*=size-]),[layout*=row][layout*=-stretch]>:not([self*=size-]),[self~=size-x1]{-ms-flex:1 0 0%!important;flex:1 0 0%!important}[self~=size-x2]{-ms-flex:2 0 0%!important;flex:2 0 0%!important}[self~=size-x3]{-ms-flex:3 0 0%!important;flex:3 0 0%!important}[self~=size-x4]{-ms-flex:4 0 0%!important;flex:4 0 0%!important}[self~=size-x5]{-ms-flex:5 0 0%!important;flex:5 0 0%!important}[self~=size-x6]{-ms-flex:6 0 0%!important;flex:6 0 0%!important}[self~=size-x7]{-ms-flex:7 0 0%!important;flex:7 0 0%!important}[self~=size-x8]{-ms-flex:8 0 0%!important;flex:8 0 0%!important}[self~=size-x9]{-ms-flex:9 0 0%!important;flex:9 0 0%!important}[self*=size-auto]{-ms-flex:1 1 auto;flex:1 1 auto}[self*=size-x0]{-ms-flex:0 0 auto;flex:0 0 auto}[self~=size-xxlarge]{max-width:1440px;width:100%}[self~=size-xlarge]{max-width:1200px;width:100%}[self~=size-large]{max-width:960px;width:100%}[self~=size-larger]{max-width:840px;width:100%}[self~=size-medium]{max-width:720px;width:100%}[self~=size-smaller]{max-width:600px;width:100%}[self~=size-small]{max-width:480px;width:100%}[self~=size-xsmall]{max-width:360px;width:100%}[self~=size-xxsmall]{max-width:240px;width:100%}[self*=size-x]:not([self*=small]):not([self*=large]){-ms-flex-negative:1;flex-shrink:1}[self~=first]{-ms-flex-order:-1;order:-1}[self~=order-1]{-ms-flex-order:1;order:1}[self~=order-2]{-ms-flex-order:2;order:2}[self~=order-3]{-ms-flex-order:3;order:3}[self~=last]{-ms-flex-order:999;order:999}[layout*=column]:not([layout*=row])>*{-ms-flex-negative:0;flex-shrink:0;-ms-flex-preferred-size:auto;flex-basis:auto}@media screen and (max-width:64em){[layout*=lg-row]{-ms-flex-direction:row;flex-direction:row}[layout*=lg-column]{-ms-flex-direction:column;flex-direction:column}[layout*=lg-columns],[layout*=lg-rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}}@media screen and (max-width:52em){[layout*=md-row]{-ms-flex-direction:row;flex-direction:row}[layout*=md-column]{-ms-flex-direction:column;flex-direction:column}[layout*=md-columns],[layout*=md-rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}}@media screen and (max-width:40em){[layout*=sm-row]{-ms-flex-direction:row;flex-direction:row}[layout*=sm-column]{-ms-flex-direction:column;flex-direction:column}[layout*=sm-columns],[layout*=sm-rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}}@media screen and (max-width:64em){[self*=lg-full]{-ms-flex:1 1 100%!important;flex:1 1 100%!important;width:100%;max-width:100%}[self*=lg-half]{-ms-flex:1 1 50%!important;flex:1 1 50%!important;width:50%;max-width:50%}[self~=lg-first]{-ms-flex-order:-1;order:-1}[self~=lg-last]{-ms-flex-order:999;order:999}[self~=lg-hide]{display:none}[self~=lg-show]{display:inherit}}@media screen and (max-width:52em){[self*=md-full]{-ms-flex:1 1 100%!important;flex:1 1 100%!important;width:100%;max-width:100%}[self*=md-half]{-ms-flex:1 1 50%!important;flex:1 1 50%!important;width:50%;max-width:50%}[self~=md-first]{-ms-flex-order:-1;order:-1}[self~=md-last]{-ms-flex-order:999;order:999}[self~=md-hide]{display:none}[self~=md-show]{display:inherit}}@media screen and (max-width:40em){[self*=sm-full]{-ms-flex:1 1 100%!important;flex:1 1 100%!important;width:100%;max-width:100%}[self*=sm-half]{-ms-flex:1 1 50%!important;flex:1 1 50%!important;width:50%;max-width:50%}[self~=sm-first]{-ms-flex-order:-1;order:-1}[self~=sm-last]{-ms-flex-order:999;order:999}[self~=sm-hide]{display:none}[self~=sm-show]{display:inherit}}</style><style type=\"text/css\" id=\"style-1784725062\">/* CSS files add styling rules to your content */\n\nbody {\n    font-family: \"Benton Sans\", \"Helvetica Neue\", helvetica, arial, sans-serif;\n    font-size: 16px;\n    margin: 0; padding: 0;\n    background: white;\n    -webkit-user-select:none;\n    -moz-user-select:none;\n    -ms-user-select:none;\n    user-select:none;\n    overscroll-behavior-y: contain;\n}\n\n.drawer {\n    background: white;\n}\n</style><style type=\"text/css\" id=\"layout/header\">\n[data-ui-component=\"layout/header\"]:not(.zuix-css-ignore) {\n  position: fixed;\n  top:0;\n  left:0;\n  right:0;\n  height:auto;\n  background: rgba(240,240,240,0.97);\n  border-bottom: solid 1px rgba(0,0,0,0.25);\n  box-shadow: 0 6px 2px -2px rgba(100,100,100,0.25);\n  z-index: 100;\n}\n\n[data-ui-component=\"layout/header\"]:not(.zuix-css-ignore)\n.header  {\n  height: 56px;\n  max-height: 56px;\n}\n\n[data-ui-component=\"layout/header\"]:not(.zuix-css-ignore)\n.title  {\n  position: absolute;\n  top: 12px;\n  left: 80px;\n  font-size: 180%;\n}\n\n[data-ui-component=\"layout/header\"]:not(.zuix-css-ignore)\n.profile  {\n  position: absolute;\n  left: 20px; top: 8px;\n  width: 42px;\n  height: 42px;\n  background: #f5f8fa;\n  border-radius: 50%;\n  border: solid 1px #00aced;\n  overflow: hidden;\n  cursor: pointer;\n}\n\n[data-ui-component=\"layout/header\"]:not(.zuix-css-ignore)\n.profile img  {\n  margin-left: -2px;\n  height: 44px;\n}\n\n[data-ui-component=\"layout/header\"]:not(.zuix-css-ignore)\n.topics  {\n  width: 100%;\n  height:40px;\n}\n\n[data-ui-component=\"layout/header\"]:not(.zuix-css-ignore)\n.topics div  {\n  font-size: 16px;\n  height:36px;\n  min-width: 96px;\n  text-align: center;\n  vertical-align: middle;\n  line-height: 36px;\n  border-bottom: solid 4px transparent;\n  cursor: pointer;\n}\n\n[data-ui-component=\"layout/header\"]:not(.zuix-css-ignore)\n.active  {\n  color: initial;\n  font-weight: bold;\n  border-bottom: solid 4px #00aced !important;\n}\n\n[data-ui-component=\"layout/header\"]:not(.zuix-css-ignore)\n[data-ui-field=\"header-box\"]  {\n  padding-left: 72px;\n  padding-right: 16px;\n  height: 100%;\n}\n\n[data-ui-component=\"layout/header\"]:not(.zuix-css-ignore)\n.pulse  {\n  box-shadow: 0 0 0 rgba(204,169,44, 0.4);\n  animation: pulse 2s infinite;\n}\n\n[data-ui-component=\"layout/header\"]:not(.zuix-css-ignore)\n.pulse:hover  {\n  animation: none;\n}\n@-webkit-keyframes pulse  {\n  0% {\n    -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);\n  }\n  70% {\n    -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0);\n  }\n  100% {\n    -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);\n  }\n}\n@keyframes pulse  {\n  0% {\n    -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);\n    box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);\n  }\n  70% {\n    -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);\n    box-shadow: 0 0 0 10px rgba(204,169,44, 0);\n  }\n  100% {\n    -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);\n    box-shadow: 0 0 0 0 rgba(204,169,44, 0);\n  }\n}\n</style><style type=\"text/css\" id=\"layout/footer\">\n[data-ui-component=\"layout/footer\"]:not(.zuix-css-ignore) {\n    position: fixed;\n    left:0; bottom:0; right: 0;\n    height: 56px;\n    background: rgba(240,240,240,0.97);\n    border-top: solid 1px rgba(0,0,0,0.25);\n    box-shadow: 0 -6px 2px -2px rgba(100,100,100,0.25);\n    text-align: center;\n    z-index: 100;\n    overflow: hidden;\n}\n\n[data-ui-component=\"layout/footer\"]:not(.zuix-css-ignore)\nbutton  {\n    padding: 12px;\n    max-height: 56px;\n    margin-left: 8px;\n    margin-right: 8px;\n    background: transparent;\n    border: none;\n    border-radius: 8px;\n    color: rgba(0,0,0,0.5);\n    -webkit-transition: all .3s; \n    transition: all .3s;\n}\n\n[data-ui-component=\"layout/footer\"]:not(.zuix-css-ignore)\nbutton:hover  {\n    background: rgba(255,255,255,0.25);\n}\n\n[data-ui-component=\"layout/footer\"]:not(.zuix-css-ignore)\nbutton:focus  {outline:0;}\n\n[data-ui-component=\"layout/footer\"]:not(.zuix-css-ignore)\nbutton i  {font-size: 32px !important;}\n\n[data-ui-component=\"layout/footer\"]:not(.zuix-css-ignore)\n.active  {\n    transform: scale(1.2);\n    color: #0085b6;\n    text-shadow:\n            1px 1px 0 #e1e8ed,\n            -1px -1px 0 #e1e8ed,\n            1px -1px 0 #e1e8ed,\n            -1px 1px 0 #e1e8ed,\n            1px 1px 0 #e1e8ed;\n}\n</style>\n<!-- load the 'header_auto_hide' on the body -->\n\n\n<!-- The header with profile icon button for opening the drawer layout (side menu panel) -->\n<header data-ui-include=\"layout/header\" data-ui-options=\"options.headerBar\" data-ui-field=\"header-bar\" data-ui-loaded=\"true\" data-ui-component=\"layout/header\" data-ui-context=\"zuix-ctx-1\"><div class=\"header\">\n  <div class=\"profile pulse\">\n    <img alt=\"Profile Icon\" src=\"images/profile_icon.png\">\n  </div>\n  <div data-ui-field=\"header-box\" layout=\"row center-center\">\n    <div class=\"title\" style=\"\">\n      Home\n    </div>\n    <div data-ui-load=\"shared/input_box\" style=\"display: none;\" data-ui-loaded=\"false\"></div>\n    <div class=\"title\" style=\"display: none;\">\n      Notifications\n    </div>\n    <div class=\"title\" style=\"display: none;\">\n      Messages\n    </div>\n  </div>\n</div>\n<div data-ui-field=\"header-tools\">\n  <div class=\"topics\" data-ui-load=\"@lib/controllers/view_pager\" data-ui-options=\"options.topicIndicator\" style=\"\" data-ui-loaded=\"false\">\n    <div>\n      Top Stories\n    </div>\n    <div>\n      World\n    </div>\n    <div>\n      Europe\n    </div>\n    <div>\n      Travel\n    </div>\n  </div>\n</div>\n</header>\n\n<main data-ui-field=\"pages\">\n\n  <!-- HOME -->\n  <section data-ui-include=\"pages/home\" style=\"\" data-ui-loaded=\"true\" data-ui-component=\"pages/home\"></section>\n\n  <!-- SEARCH -->\n  <section data-ui-include=\"pages/search\" style=\"display: none;\"></section>\n\n  <!-- NOTIFICATIONS -->\n  <section data-ui-include=\"pages/notifications\" style=\"display: none;\"></section>\n\n  <!-- ABOUT -->\n  <section data-ui-include=\"pages/about\" layout=\"column top-center\" style=\"display: none;\"></section>\n\n</main>\n\n<!-- The footer with toolbar buttons -->\n<footer data-ui-include=\"layout/footer\" data-ui-options=\"options.footerBar\" data-ui-field=\"footer-bar\" data-ui-loaded=\"true\" data-ui-component=\"layout/footer\" data-ui-context=\"zuix-ctx-2\"><button class=\"active\">\n  <i class=\"material-icons md-48\">home</i>\n</button>\n<button>\n  <i class=\"material-icons md-48\">search</i>\n</button>\n<button>\n  <i class=\"material-icons md-48\">notifications</i>\n</button>\n<button>\n  <i class=\"material-icons md-48\">info</i>\n</button>\n</footer>\n\n<!-- The DrawerLayout for side menu panel -->\n<div data-ui-load=\"https://zuixjs.github.io/zkit/lib/controllers/drawer_layout\" data-ui-options=\"options.drawerLayout\" class=\"drawer\" draggable=\"false\" data-ui-loaded=\"false\" data-ui-context=\"zuix-ctx-3\" data-ui-component=\"https://zuixjs.github.io/zkit/lib/controllers/drawer_layout\" tabindex=\"0\" style=\"position: fixed; overflow-y: auto; left: -280px; width: 280px; top: 0px; bottom: 0px; z-index: 101; touch-action: none; box-shadow: rgba(0, 0, 0, 0.25) 8px 0px 6px -6px; transition: all 0.15s ease 0s;\">\n  <!-- Add Navigation Drawer content -->\n  <div data-ui-include=\"shared/main_menu\"></div>\n</div>\n\n<noscript>\n  Turn on JavaScript to access this site content.\n</noscript>\n\n\n\n<div style=\"position: fixed; top: 0px; left: 0px; bottom: 0px; right: 0px; z-index: 100; touch-action: none; background-color: rgba(0, 0, 0, 0.5); display: none; transition: all 0.15s ease 0s;\"></div>",css:null,controller:function(t){function o(E,H,L){let A=new Date().getTime();v={event:E,cancel:function(){v.event.cancelBubble=!0,k||v.event.preventDefault()},startX:H,startY:L,startTime:A,shiftX:0,shiftY:0,endTime:0,stepX:0,stepY:0,stepTime:A,velocity:0,x:H,y:L,scrollIntent:function(){return g===f?"horizontal":!(g!==m)&&"vertical"}},j=p(v),t.trigger("gesture:touch",v)}function s(E,H,L){if(null!=v){v.event=E,v.x=H,v.y=L,v.shiftX=H-v.startX,v.shiftY=L-v.startY,v.endTime=new Date().getTime();let A=c();null!=A&&!1!==_&&(null!=I&&I!==v.direction?(_=!1,I="cancel"):(_=A,I=v.direction)),t.trigger("gesture:pan",v)}}function r(E){null!=v&&(j.update(),v.event=E,null==_&&(_=c()),null!=_&&!1!==_&&t.trigger(_,v)),t.trigger("gesture:release",v),g=u,I=null,_=null,v=null}function c(){let E=null;j.update();const H=2,L=180*Math.atan2(v.shiftY-v.stepY,v.shiftX-v.stepX)/Math.PI;return 0===v.shiftX&&0===v.shiftY&&v.startTime>C+100&&v.stepTime<750?(C=new Date().getTime(),E="gesture:tap"):(g===u||g===f)&&v.stepDistance>H&&(135<=L&&180>=L||-180<=L&&-135>=L)?(v.direction="left",E="gesture:swipe",g=f):(g===u||g===f)&&v.stepDistance>H&&(0<=L&&45>=L||-45<=L&&0>L)?(v.direction="right",E="gesture:swipe",g=f):(g===u||g===m)&&v.stepDistance>H&&45<L&&135>L?(v.direction="down",E="gesture:swipe",g=m):(g===u||g===m)&&v.stepDistance>H&&-135<L&&-45>L&&(v.direction="up",E="gesture:swipe",g=m),v.stepDistance>H&&j.step(),E}function p(E){let H,L={time:0,x:0,y:0},A={time:0,x:0,y:0},W=function(){E.stepTime=E.endTime,E.stepX=E.shiftX,E.stepY=E.shiftY,E.stepSpeed=0,E.stepDistance=0},D=function(){H=E.direction,L.time=new Date().getTime(),L.x=E.x,L.y=E.y,E.velocity=0,E.distance=0,W()};return D(),{update:function(){if(A.time=new Date().getTime(),A.x=E.x,A.y=E.y,null!=H&&H!==E.direction)return void D();null==H&&E.direction!==H&&(H=E.direction);const P=A.time-L.time;let X={x:A.x-L.x,y:A.y-L.y};const N=Math.sqrt(X.x*X.x+X.y*X.y);E.distance=N;let O=N/P;E.velocity="left"===E.direction||"up"===E.direction?-O:O,E.stepTime=E.endTime-E.stepTime,X={x:E.shiftX-E.stepX,y:E.shiftY-E.stepY},E.stepDistance=Math.sqrt(X.x*X.x+X.y*X.y),E.stepSpeed=E.stepDistance/E.stepTime},step:W}}const u=0,f=1,m=2;let g=u,v,z=!1,k=!0,T=-1,_,I,j,S=!1,C=new Date().getTime();Math.sign=Math.sign||function(E){return(0<E)-(0>E)||+E},t.init=function(){let E=t.view();const H=t.options();H.html=!1,H.css=!1,k=!1!==H.passive&&"false"!==E.attr("data-o-passive"),T=H.startGap||E.attr("data-o-startgap")},t.create=function(){t.view().on("dragstart",{handler:function(E){z||k||E.preventDefault()},passive:k}).on("mousedown",{handler:function(E){const H=zuix.$(E.target);1===E.which&&0===H.parent("[class*=\"no-gesture\"]").length()&&E.x>T?(S=!0,z=!1,H.get().draggable=!1,o(E,E.x,E.y)):z=!0},passive:k}).on("mousemove",{handler:function(E){!z&&S&&s(E,E.x,E.y)},passive:k}).on("mouseup",function(E){1!==E.which||z||(S=!1,r(E))}).on("touchstart",{handler:function(E){const H=zuix.$(E.target);0===H.parent("[class*=\"no-gesture\"]").length()&&E.touches[0].clientX>T?(z=!1,H.get().draggable=!1,o(E,E.touches[0].clientX,E.touches[0].clientY)):z=!0},passive:k}).on("touchmove",{handler:function(E){z||s(E,E.touches[0].clientX,E.touches[0].clientY)},passive:k}).on("touchend",function(E){z||r(E)})}}},{componentId:"pages/home",view:"<div data-ui-load=\"@lib/controllers/view_pager\"\n      data-ui-options=\"options.viewPager\"\n      class=\"feed-pager\"\n      draggable=\"false\">\n\n    <!-- TOP STORIES -->\n    <section class=\"content\" data-ui-load=\"@lib/controllers/header_auto_hide\" data-ui-options=\"options.autoHidingBars\">\n\n        <div data-ui-load=\"pages/home/items_list\"\n             data-o-rss=\"http://rss.cnn.com/rss/edition.rss\"></div>\n\n    </section>\n\n    <!-- WORLD -->\n    <section class=\"content\" data-ui-load=\"@lib/controllers/header_auto_hide\" data-ui-options=\"options.autoHidingBars\">\n\n        <div data-ui-load=\"pages/home/items_list\"\n             data-o-rss=\"http://rss.cnn.com/rss/edition_world.rss\"></div>\n\n    </section>\n\n    <!-- EUROPE -->\n    <section class=\"content\" data-ui-load=\"@lib/controllers/header_auto_hide\" data-ui-options=\"options.autoHidingBars\">\n\n        <div data-ui-load=\"pages/home/items_list\"\n             data-o-rss=\"http://rss.cnn.com/rss/edition_europe.rss\"></div>\n\n    </section>\n\n    <!-- TRAVEL -->\n    <section class=\"content\" data-ui-load=\"@lib/controllers/header_auto_hide\" data-ui-options=\"options.autoHidingBars\">\n\n        <div data-ui-load=\"pages/home/items_list\"\n             data-o-rss=\"http://rss.cnn.com/rss/edition_travel.rss\"></div>\n\n    </section>\n\n</div>\n<div data-ui-load=\"@lib/components/context_menu\"\n     data-ui-context=\"news-options-menu\">\n    <div data-ui-field=\"menu\">\n        <button layout=\"row center-left\">\n            <i class=\"material-icons\">bookmark_border</i>\n            <span>Save for later</span>\n        </button>\n        <button layout=\"row center-left\">\n            <i class=\"material-icons\">share</i>\n            <span>Share</span>\n        </button>\n        <button layout=\"row center-left\">\n            <i class=\"material-icons\">open_in_new</i>\n            <span>Open link</span>\n        </button>\n        <button layout=\"row center-left\">\n            <i class=\"material-icons\">not_interested</i>\n            <span>Hide items from this source</span>\n        </button>\n        <button layout=\"row center-left\">\n            <i class=\"material-icons\">thumb_up</i>\n            <span>More like this</span>\n        </button>\n        <button layout=\"row center-left\">\n            <i class=\"material-icons\">thumb_down</i>\n            <span>Less like this</span>\n        </button>\n    </div>\n</div>\n",css:".content {\n    font-family: serif;\n    font-size: 110%;\n    width: 100vw;\n    height: 100vh;\n    overflow-y: scroll;\n}\n\n.feed-pager {\n    height: 100vh;\n    z-index: 0;\n}\n",controller:function(){}},{componentId:"pages/search",view:"<div class=\"message\" self=\"stretch-stretch\" layout=\"row center-center\">\n    <div>Search</div> <i class=\"material-icons\">search</i>\n</div>\n",css:".message {\n    color: darkgrey;\n    min-height: 100vh;\n    width: 100vw;\n    font-size: 200%;\n}\n.message i {\n    margin-left: 16px;\n    color: darkgrey;\n    font-size: 150%;\n}\n",controller:function(){}},{componentId:"pages/notifications",view:"<div class=\"message\" self=\"stretch-stretch\" layout=\"row center-center\">\n    <div>Notifications</div> <i class=\"material-icons\">notifications</i>\n</div>\n",css:".message {\n    color: darkgrey;\n    min-height: 100vh;\n    width: 100vw;\n    font-size: 200%;\n}\n.message i {\n    margin-left: 16px;\n    color: darkgrey;\n    font-size: 150%;\n}\n",controller:function(){}},{componentId:"pages/about",view:"<div self=\"size-small center-center\">\n\n    <h1>About</h1>\n\n    <p>\n        This web application template is built with <a href=\"https://zuixjs.github.io/zuixjs.org\">zuix.js</a>.\n        <br>\n        Source code and documentation available from <a href=\"https://github.com/zuixjs/zuix-html-pwa\">HTML-PWA</a> repository.\n    </p>\n\n    <h2>Other resources</h2>\n    <ul>\n        <li>\n            <a href=\"https://zuixjs.github.io/zkit\">zKit</a><br>\n            a collection of components for modern web.\n        </li>\n        <li>\n            <a href=\"https://github.com/zuixjs/zuix-web-flix\">WebFlix</a><br>\n            a netflix mobile app clone implemented as a progressive web app.\n        </li>\n        <li>\n            <a href=\"https://github.com/zuixjs/zuix-web-book\">Web Book</a><br>\n            a progressive web app template of a web book.\n        </li>\n    </ul>\n\n    <h3>Disclaimer</h3>\n    <p class=\"small\">This product uses the CNN.com RSS feed but is not endorsed or certified by CNN.com.</p>\n\n</div>\n",css:". {\n    color: black;\n    padding: 24px;\n    margin-top: 64px;\n    margin-bottom: 64px;\n}\n\nh1,h2,h3 {\n    color: grey;\n}\n\nh2 {\n    font-size: 130%;\n}\n\na, a:visited, a:hover {\n    font-weight: 700;\n    color: darkorange;\n    text-decoration: none;\n}\n\n.small {\n    font-size: 90%;\n}\n",controller:function(){}},{componentId:"shared/main_menu",view:"<div class=\"profile\">\n  <img alt=\"Profile Icon\" src=\"images/profile_icon.png\" draggable=\"false\">\n</div>\n<div class=\"info\">\n  <div class=\"nick\">DevUser</div>\n  <div class=\"name\">@devrocks</div>\n  <div class=\"summary\">\n    <strong>123</strong> Following\n    <strong>456</strong> Followers\n  </div>\n</div>\n\n<hr>\n\n<div class=\"options\">\n\n  <button>\n    <i class=\"material-icons\">account_circle</i>\n    <span>Profile</span>\n  </button>\n\n  <button>\n    <i class=\"material-icons\">assignment</i>\n    <span>Lists</span>\n  </button>\n\n  <button>\n    <i class=\"material-icons\">bookmark</i>\n    <span>Bookmarks</span>\n  </button>\n\n  <button>\n    <i class=\"material-icons\">flash_on</i>\n    <span>Moments</span>\n  </button>\n\n</div>\n\n<hr>\n\n<div class=\"options\">\n\n  <button>\n    <span>Settings and privacy</span>\n  </button>\n\n</div>\n",css:". {\n  font-family: \"Trebuchet MS\", sans-serif;\n  overflow-x: hidden;\n}\n\na {\n  text-decoration: none;\n  color: black;\n}\n\nhr {\n  margin-top: 12px;\n  margin-bottom: 12px;\n  opacity: 0.2;\n}\n\n.profile {\n  margin-top: 16px;\n  margin-left: 16px;\n  width: 64px;\n  height: 64px;\n  background: #f5f8fa;\n  border-radius: 50%;\n  border: solid 1px #00aced;\n  overflow: hidden;\n  cursor: pointer;\n}\n\n.profile img {\n  margin-left: -4px;\n  width: 68px;\n  height: 68px;\n}\n\n.info {\n  margin-top: 8px;\n  margin-left: 16px;\n  font-size: 120%;\n}\n\n.nick {\n  font-weight: bold;\n}\n.name {\n  font-size: 90%;\n  color: gray;\n}\n.summary {\n  color: darkgray;\n  font-size: 80%;\n  margin-top: 8px;\n}\n.summary strong {\n  color: gray;\n}\n\n.options button {\n    font-family: \"Trebuchet MS\", sans-serif;\n    font-size: 110%;\n    width: 100%;\n    height:56px;\n    border: 0;\n    margin: 0;\n    padding: 0 0 0 16px;\n    background: transparent;\n    color: black;\n    vertical-align: middle;\n    align-items: center;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n}\n.options button i {\n  font-size: 200%;\n  color: darkgray;\n}\n.options button span {\n  margin-left: 8px;\n}\n",controller:function(){}},{componentId:"https://zuixjs.github.io/zkit/lib/controllers/view_pager",controller:function(t){function o(){null!=J&&clearTimeout(J),J=setTimeout(s,250)}function s(he){if(!he&&(ne||null!=pe))return void o();fe.each(function(){this.css({position:"absolute",left:0,top:0})});const xe=T(t.view().get());if(0===xe.width||0===xe.height){if(0===xe.height&&t.view().position().visible){let ye=0;fe.each(function(be,ve){let ze=T(ve);ze.height>ye&&(ye=ze.height)}),xe.height<ye&&t.view().css("height",ye+"px")}return void o()}ce=xe;let ge=0,we=!1;fe.each(function(ye,be){let ve=T(be);if(Z===B){let ze=(xe.height-ve.height)/2;0>ze&&(ze=0),N(this,O),X(this,ge,ze),ge+=ve.width}else{let ze=(xe.width-ve.width)/2;0>ze&&(ze=0),N(this,O),X(this,ze,ge),ge+=ve.height}("true"===this.attr("data-ui-lazyload")||0<this.find("[data-ui-lazyload=\"true\"]").length())&&(we=!0)}),le=we,z(q),1<fe.length()&&m()}function r(){let he=!1,xe=parseInt(q)+1;return xe>=fe.length()&&(xe=fe.length()-1,he=!0),z(xe,O),!he}function c(){let he=!1,xe=parseInt(q)-1;return 0>xe&&(xe=0,he=!0),z(xe,O),!he}function p(){z(0,O)}function u(){z(fe.length()-1,O)}function f(){z(parseInt(q)+K,O),m()}function m(){if(h(),!0===ee){const xe=t.view().position().visible;xe?(!re&&zuix.componentize(t.view()),V=setTimeout(f,G)):V=setTimeout(m,500),re=xe}}function h(){null!=V&&clearTimeout(V)}function g(he,xe){let ge=0;return fe.each(function(we,ye){let be=_(this);ge=we;const ve=T(ye),ze={x:be.position.x,y:be.position.y,w:ve.width,h:ve.height};if(Z===B&&(ze.x>he||ze.x+ze.w>he)||Z===M&&(ze.y>xe||ze.y+ze.h>xe))return!1}),ge}function v(he,xe){let ge=t.view().position(),we=g(he.x-ge.x,he.y-ge.y);z(we,null==xe?O:xe)}function z(he,xe){F=q,0>he?(K=U,he=0):he>=fe.length()?(K=$,he=fe.length()-1):he!==q&&(K=q<he?U:$),q=he,q!=F&&(fe.eq(q).css("z-index",1),-1!==F&&fe.eq(F).css("z-index",0),t.trigger("page:change",{in:q,out:F}));const ge=fe.eq(he),we=_(ge),ye=T(ge.get()),be={x:(ce.width-ye.width)/2-we.position.x,y:(ce.height-ye.height)/2-we.position.y};k(be,xe),m()}function k(he,xe){const ge=C(),we=_(fe.eq(0)),ye=fe.eq(fe.length()-1),be=_(ye);if(fe.each(function(){const ke=_(this),Te=C();ke.dragStart={x:Te.marginLeft+ke.position.x,y:Te.marginTop+ke.position.y}}),Z===B){let ve=he.x;0<we.position.x+he.x?ve=-we.position.x:be.position.x+ye.get().offsetWidth+he.x<ce.width&&(ve=2*-ge.marginLeft+ce.width-(be.position.x+ye.get().offsetWidth)),0!=he.x-ve&&null!=xe&&(xe={duration:xe.duration*(ve/he.x),easing:Y},(!isFinite(xe.duration)||0>xe.duration)&&(xe.duration=0.2)),E(ve,0,xe)}else{let ve=he.y;0<we.position.y+he.y?ve=-we.position.y:be.position.y+ye.get().offsetHeight+he.y<ce.height&&(ve=2*-ge.marginTop+ce.height-(be.position.y+ye.get().offsetHeight)),0!=he.y-ve&&null!=xe&&(xe={duration:xe.duration*(ve/he.y),easing:Y},(!isFinite(xe.duration)||0>xe.duration)&&(xe.duration=0.2)),E(0,ve,xe)}de=!0}function T(he){const xe=he.getBoundingClientRect(),ge=xe.width||he.offsetWidth,we=he.offsetHeight||xe.height;return{width:ge,height:we}}function _(he){const xe=he.get().data=he.get().data||{};return xe.position=xe.position||{x:0,y:0},xe}function I(){le&&(j(),null!=ue&&clearTimeout(ue),null!=pe&&clearInterval(pe),pe=setInterval(function(){se&&fe.each(function(he,xe){const ge=window.getComputedStyle(xe,null),we={width:parseFloat(ge.width.replace("px","")),height:parseFloat(ge.height.replace("px",""))},ye=parseFloat(ge.left.replace("px","")),be=parseFloat(ge.top.replace("px",""));0<we.width&&0<we.height&&(xe=zuix.$(xe),0>ye+we.width||0>be+we.height||ye>ce.width||be>ce.height?"hidden"!==xe.visibility()&&xe.visibility("hidden"):"visible"!==xe.visibility()&&xe.visibility("visible"))}),zuix.componentize(t.view())},10))}function j(){le&&null==ue&&clearInterval(pe)}function S(){ne=!0,de=!1,fe.each(function(he,xe){const ge=_(this),we=C(),ye=window.getComputedStyle(xe,null);ge.position.x=parseFloat(ye.left.replace("px","")),ge.position.y=parseFloat(ye.top.replace("px","")),this.css("left",ge.position.x+"px"),this.css("top",ge.position.y+"px"),ge.dragStart={x:we.marginLeft+ge.position.x,y:we.marginTop+ge.position.y}})}function C(){const he={w:0,h:0,marginLeft:0,marginTop:0};return fe.each(function(xe,ge){const we=T(ge);he.w+=we.width,he.h+=we.height}),Z===B&&he.w<ce.width?he.marginLeft=(ce.width-he.w)/2:Z===M&&he.h<ce.height&&(he.marginTop=(ce.height-he.h)/2),he}function E(he,xe,ge){null==ge?le&&zuix.componentize(t.view()):(I(),ue=setTimeout(function(){ue=null,j()},1e3*ge.duration),ge=ge.duration+"s "+ge.easing),fe.each(function(){const be=_(this);N(this,ge),X(this,be.dragStart.x+he,be.dragStart.y+xe)})}function H(he){null!=he&&(he.done=!0,!de&&(Z===B&&"horizontal"===he.scrollIntent()||Z===M&&"vertical"===he.scrollIntent())&&W(null,he)),j(),ne=!1}function L(he,xe){if(xe.scrollIntent()&&!xe.done){(Q||("left"===xe.direction||"right"===xe.direction)&&Z===B||("up"===xe.direction||"down"===xe.direction)&&Z===M)&&(!Q&&null==xe.event.touches&&t.view().get().addEventListener("click",function(we){Q&&(Q=!1,we.cancelBubble=!0,we.preventDefault()),t.view().get().removeEventListener("click",this,!0)},!0),Q=!0,xe.cancel());const ge=C();Z===B&&"horizontal"===xe.scrollIntent()?E(xe.shiftX-ge.marginLeft,0):Z===M&&"vertical"===xe.scrollIntent()&&E(0,xe.shiftY-ge.marginTop)}}function A(he,xe){let ge=t.view().position(),we=g(xe.x-ge.x,xe.y-ge.y);t.trigger("page:tap",we,xe),te&&v(xe)}function W(he,xe){const we=1.25,ye=Math.exp(Math.abs(xe.velocity/(Math.abs(xe.velocity)<=we?5:2))+1);let be=0.99+ye/1e3;0.999<be&&(be=0.999);const ve=Math.log(0.01/Math.abs(xe.velocity))/Math.log(be),ze={duration:ve/1e3,easing:"cubic-bezier(0.0,0.1,0.35,1.0)"},Te=xe.stepSpeed<we?0:ye*xe.velocity*(1-Math.pow(be,ve+1))/(1-be);(D(xe)||null==he)&&function(Ie,je){te?(ze.duration*=0.5,Z===B?v({x:Ie.x-je.x,y:Ie.y},ze):v({x:Ie.x,y:Ie.y-je.y},ze)):k(je,ze)}(xe,{x:Te,y:Te})}function D(he){return!te||1.25<Math.abs(he.velocity)}function P(he,xe){if(!D(xe))switch(xe.direction){case"right":Z===B&&c();break;case"left":Z===B&&r();break;case"down":Z===M&&c();break;case"up":Z===M&&r();}}function X(he,xe,ge){const we=_(he);return isNaN(xe)||isNaN(ge)||(we.position={x:xe,y:ge},he.css({left:we.position.x+"px",top:we.position.y+"px"})),we}function N(he,xe){null==xe&&(xe="none"),he.css({"-webkit-transition":xe,"-moz-transition":xe,"-ms-transition":xe,"-o-transition":xe,transition:xe})}const O={duration:0.3,easing:"ease"},Y="cubic-bezier(0.0,0.1,0.35,1.1)",B="horizontal",M="vertical",U=1,$=-1;let q=-1,F=0,V=null,G=3e3,K=U,J=null,Q=!1,Z=B,ee=!1,te=!1,oe=!1,ie=!0,ae=0,se=!1,ne=!1,re=!1,le=!1,de=!1,ce={width:0,height:0},pe=null,ue=null,fe=null;const me=new MutationObserver(function(){fe=t.view().children(),o()});t.init=function(){let he=t.options(),xe=t.view();he.html=!1,he.css=!1,te=!0===he.enablePaging||"true"===xe.attr("data-o-paging"),ee=!0===he.autoSlide||"true"===xe.attr("data-o-slide"),ie=!1!==he.passive&&"false"!==xe.attr("data-o-passive"),oe=!0===he.holdTouch||"true"===xe.attr("data-o-hold"),ae=he.startGap||xe.attr("data-o-startgap"),(!0===he.verticalLayout||xe.attr("data-o-layout")===M)&&(Z=M),null==he.slideInterval?null!=xe.attr("data-o-slide-interval")&&(G=parseInt(xe.attr("data-o-slide-interval"))):G=he.slideInterval,se=!0===he.autohide||"true"===xe.attr("data-o-autohide")},t.create=function(){const he=t.view().css({position:"relative",overflow:"hidden"});fe=he.children(),he.find("img").each(function(){this.one("load",o)}),zuix.$(window).on("resize",function(){s(!0)}).on("orientationchange",function(){s(!0)}),me.observe(he.get(),{attributes:!1,childList:!0,subtree:!0,characterData:!1}),o(),z(0);let xe=null;zuix.load("@lib/controllers/gesture_helper",{view:he,passive:ie,startGap:ae,on:{"gesture:touch":function(ge,we){Q=!1,h(),S(),oe&&we.cancel()},"gesture:release":function(ge,we){H(we),m()},"gesture:tap":function(ge,we){null!=xe&&clearTimeout(xe),xe=setTimeout(function(){A(ge,we)},50)},"gesture:pan":L,"gesture:swipe":P},ready:function(){s(!0)}}),t.expose("page",function(ge){return null==ge?parseInt(q):void z(ge,O)}).expose("get",function(ge){return fe.eq(ge)}).expose("slide",function(ge){!0===ge?m():h()}).expose("layout",function(ge){if(null==ge)return Z;Z=ge===M?M:B;o()}).expose("refresh",function(){s(!0)}).expose("next",r).expose("prev",c).expose("last",u).expose("first",p)},t.destroy=function(){null!=me&&me.disconnect()}}},{componentId:"https://zuixjs.github.io/zkit/lib/components/context_menu",controller:function(t){function o(){c.show(),setTimeout(function(){c.css("opacity",1),r.css("bottom",0).get().focus()},100),t.trigger("open")}function s(){c.one("transitionend",function(){this.hide()}).css("opacity",0),r.css("bottom",-r.position().rect.height+"px"),t.trigger("close")}let r,c;t.create=function(){r=t.field("menu"),r.css("bottom",-r.position().rect.height+"px"),c=t.view(),c.css("opacity",0).hide().on("click",function(){s()}).on("keydown",function(p){p=p||window.event,27===p.keyCode&&s()}),zuix.load("@lib/controllers/gesture_helper",{view:c,on:{"gesture:pan":function(p,u){r.hasClass("no-transition")||r.addClass("no-transition"),0<u.shiftY&&r.css("bottom",-u.shiftY+"px")},"gesture:release":function(p,u){r.removeClass("no-transition"),0>=u.velocity&&"up"===u.direction?r.css("bottom",0):"down"===u.direction&&s()}}}),t.expose("show",o),t.expose("hide",s)}},css:". {\n    position: fixed;\n    bottom:0;\n    left:0;\n    right: 0;\n    top: 0;\n    -ms-touch-action: none;\n    touch-action: none;\n    background: rgba(0,0,0,0.5);\n    z-index: 200;\n    -webkit-transition: opacity 0.25s ease-in-out;\n    -moz-transition: opacity 0.25s ease-in-out;\n    -ms-transition: opacity 0.25s ease-in-out;\n    -o-transition: opacity 0.25s ease-in-out;\n    transition: opacity 0.25s ease-in-out;\n}\n.menu {\n    outline: none !important;\n    margin-left: auto;\n    margin-right: auto;\n    left: 50%;\n    transform: translateX(-50%);\n    position: absolute;\n    width: 100%;\n    max-width: 420px;\n    background: white;\n    border: solid 1px rgba(0,0,0,0.1);\n    border-radius: 16px 16px 0 0;\n    box-shadow: 0 -5px 5px -5px #333;\n    -webkit-transition: bottom 0.25s ease-in-out;\n    -moz-transition: bottom 0.25s ease-in-out;\n    -ms-transition: bottom 0.25s ease-in-out;\n    -o-transition: bottom 0.25s ease-in-out;\n    transition: bottom 0.25s ease-in-out;\n}\nbutton {\n    width: 100%;\n    height:48px;\n    padding: 16px;\n    background: none;\n    border: none;\n}\nbutton span {\n    font-family: sans-serif, Helvetica;\n    font-size: 120%;\n    margin-left: 24px;\n}\nbutton i {\n    color: gray;\n    font-size: 140%;\n    margin-left: 8px;\n}\nbutton:hover {\n    background: rgba(0,0,0,0.1);\n}\n.no-transition {\n    -webkit-transition: none;\n    -moz-transition: none;\n    -ms-transition: none;\n    -o-transition: none;\n    transition: none;\n}\n",view:"<div data-ui-field=\"menu\" class=\"menu\" tabindex=\"0\"></div>\n"},{componentId:"shared/input_box",view:"<span class=\"input\">\n    <input type=\"text\" placeholder=\"Enter search terms\">\n    <span></span>\n</span>\n",css:"\n. {\n    width: 100%;\n    max-width: 640px;\n    height: 100%;\n    text-align: center;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\ninput {\n    width: 100%;\n    font-size: 130%;\n    font-family: inherit;\n    line-height: inherit;\n    color: #2e3750;\n    min-width: 12em;\n}\n\n.input {\n    width: 100%;\n    position: relative;\n    background: linear-gradient(21deg, #10abff, #1beabd);\n    padding: 2px;\n    display: inline-block;\n    border-radius: 9999em;\n    margin: 8px;\n}\n.input *:not(span) {\n    position: relative;\n    display: inherit;\n    border-radius: inherit;\n    margin: 0;\n    border: none;\n    outline: none;\n    padding: 3px 8px;\n    z-index: 1;\n}\n.input *:not(span):focus + span {\n    opacity: 1;\n    -webkit-transform: scale(1);\n    transform: scale(1);\n}\n.input span {\n    -webkit-transform: scale(1);\n    transform: scale(1);\n    transition: opacity .25s, -webkit-transform .5s;\n    transition: transform .5s, opacity .25s;\n    transition: transform .5s, opacity .25s, -webkit-transform .5s;\n    opacity: 0;\n    position: absolute;\n    z-index: 0;\n    margin: 4px;\n    left: 0;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    border-radius: inherit;\n    pointer-events: none;\n    box-shadow: inset 0 0 0 2px #fff, 0 0 0 2px #fff, 2px -2px 22px #1beabd,  -2px 2px 22px #10abff;\n}\n\n::-webkit-input-placeholder {\n    color: #cbd0d5;\n}\n\n:-ms-input-placeholder {\n    color: #cbd0d5;\n}\n\n::-ms-input-placeholder {\n    color: #cbd0d5;\n}\n\n::placeholder {\n    color: #cbd0d5;\n}\n",controller:function(t){t.create=function(){}}},{componentId:"https://zuixjs.github.io/zkit/lib/controllers/header_auto_hide",controller:function(t){function o(){null!=p&&p.hasClass("header-collapse")&&p.removeClass("header-collapse").addClass("header-expand"),null!=u&&u.hasClass("footer-collapse")&&u.removeClass("footer-collapse").addClass("footer-expand")}function s(){null==p||p.hasClass("header-collapse")||(0===f&&(f=p.position().rect.height,0<f&&r()),p.removeClass("header-expand").addClass("header-collapse")),null==u||u.hasClass("footer-collapse")||(0===m&&(m=u.position().rect.height,0<f&&c()),u.removeClass("footer-expand").addClass("footer-collapse"))}function r(){zuix.$.appendCss("\n/* Header bar shrink/expand */\n@keyframes header-collapse-anim {\n  from { top: 0; }\n  to { top: -"+f+"px; }\n}\n@keyframes header-expand-anim {\n  from { top: -"+f+"px; }\n  to { top: 0; }\n}\n.header-collapse {\n  animation-fill-mode: forwards;\n  animation-name: header-collapse-anim;\n  animation-duration: 0.5s;\n  top: -"+f+"px;\n}\n.header-expand {\n  animation-fill-mode: forwards;\n  animation-name: header-expand-anim;\n  animation-duration: 0.5s;\n  top: 0px;\n}\n",null,"onscroll_header_hide_show")}function c(){zuix.$.appendCss("\n/* Footer bar shrink/expand */\n@keyframes footer-collapse-anim {\n  from { bottom: 0; }\n  to { bottom: -"+m+"px; }\n}\n@keyframes footer-expand-anim {\n  from { bottom: -"+m+"px; }\n  to { bottom: 0; }\n}\n.footer-collapse {\n  animation-fill-mode: forwards;\n  animation-name: footer-collapse-anim;\n  animation-duration: 0.5s;\n  bottom: -"+m+"px;\n}\n.footer-expand {\n  animation-fill-mode: forwards;\n  animation-name: footer-expand-anim;\n  animation-duration: 0.5s;\n  bottom: 0;\n}\n",null,"zkit_onscroll_hide_show")}let p,u,f=0,m=0;t.init=function(){t.options().css=!1,t.options().html=!1},t.create=function(){let h=t.options().header||t.view().attr("data-o-header");null!=h&&(p=zuix.field(h));let g=t.options().footer||t.view().attr("data-o-footer");null!=g&&(u=zuix.field(g));let v=t.options().height||t.view().attr("data-o-height");null==v||isNaN(v)||(f=m=parseInt(v),r(),c());const z=new Date().getTime();zuix.load("@lib/controllers/scroll_helper",{view:t.view(),on:{"scroll:change":function(k,T){"scroll"===T.event&&1e3<new Date().getTime()-z&&(0>T.info.shift.y?s():0<T.info.shift.y&&o()),t.trigger("page:scroll",T)}}}),t.expose("show",o).expose("hide",s)}}},{componentId:"https://zuixjs.github.io/zkit/lib/controllers/scroll_helper",view:"\n\n        <div data-ui-load=\"pages/home/items_list\" data-o-rss=\"http://rss.cnn.com/rss/edition.rss\" data-ui-loaded=\"false\"></div>\n\n    ",css:null,controller:function(t){function o(){null!=m&&clearTimeout(m);const k=new Date().getTime();if(100<k-f.timestamp?r():m=setTimeout(function(){r()},99),!(k<v&&66>k-z)){z=k;const T=t.view().get(),_="scroll-helper-visible";null!=h&&null!=g&&h.each(function(I,j){const S=this.position();let C=!1,E=0;if(null===j.offsetParent)return!1;null==E&&(E=0);const H={left:0,top:0,right:f.viewport.width,bottom:f.viewport.height,width:f.viewport.width,height:f.viewport.height};let L=j.getBoundingClientRect(),A=j.offsetParent;for(;null!==A&&A!==T;){const W=A.getBoundingClientRect();L={left:L.left+W.left,top:L.top+W.top,right:L.right+W.left,bottom:L.bottom+W.top,width:L.width,height:L.height},A=A.offsetParent}if(C=!(L.left>H.right-E||L.right<H.left+E||L.top>H.bottom-E||L.bottom<H.top+E),S.frame={dx:(L.left+L.width/2-H.left)/H.width,dy:(L.top+L.height/2-H.top)/H.height},S.visible=C,!C&&this.hasClass(_))this.removeClass(_),S.event="exit";else if(!C)S.event="off-scroll";else if(C)this.hasClass(_)?S.event="scroll":(S.event="enter",this.addClass(_));else return;g(this,S)})}}function s(k,T){null==k?(h=null,g=null):(h=t.view(k),g=T)}function r(){const k=t.view().get(),T=k.getBoundingClientRect(),_={top:T.top,right:T.right,bottom:T.bottom,left:T.left,width:T.width,height:T.height,x:T.x,y:T.y};_.y=-t.view().get().scrollTop||(_.y?_.y:0),_.height=t.view().get().scrollHeight||(_.height?_.height:0),f.size.width=_.width,f.size.height=_.height,k===document.body?(f.size.width=document.body.offsetWidth,f.size.height=document.body.offsetHeight,f.viewport.width=document.documentElement.clientWidth||f.size.width,f.viewport.height=document.documentElement.clientHeight||f.size.height):(f.viewport.width=k.offsetWidth,f.viewport.height=k.offsetHeight),f.timestamp=new Date().getTime(),f.shift={x:_.x-f.viewport.x,y:_.y-f.viewport.y},f.viewport.x=_.x,f.viewport.y=_.y;const I=f.size.height+_.y-f.viewport.height;0==I||0===_.y?t.trigger("scroll:change",{event:0===_.y?"hit-top":"hit-bottom",info:f}):t.trigger("scroll:change",{event:"scroll",info:f})}function c(k,T){if((k instanceof Element||k instanceof zuix.$.ZxQuery)&&(k=zuix.$(k).position().y-f.viewport.y),-1===T)return p(k);const _=Date.now();null!=T&&(v=_+T),T=v-_;const I=t.view().get();let j=0;j=I===document.body?void 0===window.pageYOffset?(document.documentElement||document.body.parentNode||document.body).scrollTop:window.pageYOffset:I.scrollTop;const S=k-j;if(0>=T||0==S)return p(k),void o();const C=j+33*(S/T);requestAnimationFrame(function(){p(C),c(k)})}function p(k){const T=t.view().get();T===document.body?(document.documentElement.scrollTop=k,document.body.scrollTop=k):T.scrollTop=k}function u(k,T){let _,I;return function(){const j=this,S=arguments;I?(clearTimeout(_),_=setTimeout(function(){Date.now()-I>=T&&(k.apply(j,S),I=Date.now())},T-(Date.now()-I))):(k.apply(j,S),I=Date.now())}}const f={timestamp:0,size:{width:0,height:0},viewport:{x:0,y:0,width:0,height:0}};let m,h,g,v=0;t.init=function(){t.options().html=!1,t.options().css=!1},t.create=function(){t.view().get()===document.body?0<t.options().throttle?window.onscroll=u(o,t.options().throttle):window.onscroll=o:0<t.options().throttle?t.view().on("scroll",u(o,t.options().throttle)):t.view().on("scroll",o),t.expose("watch",function(k,T){return s(k,T),t.context}),t.expose("scrollStart",function(k){return null==k&&(k=-1),c(0,k),t.context}).expose("scrollEnd",function(k){return null==k&&(k=-1),c(f.size.height,k),t.context}).expose("scrollTo",function(k,T){return null==T&&(T=-1),c(k,T),t.context}).expose("info",function(){return f}),c(5,-1),c(0,200)};let z}},{componentId:"pages/home/items_list",view:"<div data-ui-field=\"list\" self=\"size-xxlarge center\" layout=\"rows stretch-center\" class=\"list\"></div>\n",css:".list {\n  margin-top: 96px;\n  margin-bottom: 206px;\n}\n\n.card-wrapper {\n  margin: 0;\n  padding:8px;\n  max-width: 100%;\n  /* min-height: 100px; this is causing strange behavior on mobile, like delayed loading?!? */\n  overflow: hidden;\n  font-family: Helvetica, sans-serif !important;\n}\n\n.info {\n  margin-left:4px;\n  margin-right:4px;\n}\n\n.card {\n  width: 100%;\n  position: relative;\n  max-width: 640px;\n  min-height: 200px;\n  padding: 12px;\n  padding-bottom: 24px;\n}\n.card i {\n  color: gray;\n  font-size: 200%;\n}\n.cover-wrapper {\n  cursor: pointer;\n  width: 100%;\n  border-radius: 12px;\n  padding-top: 75%;\n  position: relative;\n  overflow: hidden;\n  background-size: cover;\n  background: #f2f2f2 no-repeat center center;\n}\n.summary {\n  width: 100%;\n}\n.options {\n  color: dimgrey;\n}\n.options span {\n  font-size: 80%;\n}\n.options button {\n  width: 48px;\n  height: 48px;\n  padding-top: 4px;\n  background: rgba(50,50,50,0.01);\n  border: none;\n  border-radius: 24px;\n}\n.options button:hover {\n  background: rgba(0,0,0,0.1);\n}\n",controller:function(t){function o(){const f=t.field("list");null!=u&&(p.$.each(u,function(m,h){const g={lazyLoad:!0,model:h};let v;5>m?(v=p.createComponent("pages/home/items_list/item",g).container(),2>m?v.setAttribute("self","size-1of2 lg-full md-full sm-full"):v.setAttribute("self","size-1of3 lg-half md-half sm-full"),v.setAttribute("class","card-wrapper")):(v=p.createComponent("pages/home/items_list/item_mini",g).container(),v.setAttribute("self","size-1of4 lg-half md-half sm-full"),v.setAttribute("class","card-wrapper mini")),v.setAttribute("layout","column stretch-center"),f.append(v)}),zuix.componentize())}function s(f){p.$.ajax({url:f,success:function(m){u=r(m),o()},error:function(){}})}function r(f){const m=[],h=new DOMParser,g=h.parseFromString(f,"text/xml");let v=p.$(g);return v.find("channel > item").each(function(z){const T=c(this.find("title")),_=c(this.find("description")),I=c(this.find("pubDate")),j=c(this.find("link")),S=this.find("[medium=\"image\"]");if(""!==T){const C=[];S.each(function(){C.push({url:this.attr("url"),width:this.attr("width"),height:this.attr("height")})});let E;5>z&&null!=C[3]?E=C[3].url:3<z&&null!=C[4]&&(E=C[4].url);m.push({title:T,link:j,cover:E,date:I,images:C})}}),m}function c(f){let m;return 0<f.length()&&(f=f.get()),null!=f&&null!=f.firstChild?m=f.firstChild.nodeValue:null!=f&&(m=f.innerHTML),m}const p=zuix;let u;t.create=function(){let f=t.view().attr("data-o-rss");f="//cors-anywhere.herokuapp.com/"+f,s(f)}},css_applied:!0},{componentId:"pages/home/items_list/item",view:"<div class=\"card\" layout=\"column top-center\">\n\n  <div data-ui-field=\"container\" class=\"cover-wrapper\">\n    <div class=\"summary\">\n      <h1 data-ui-field=\"title\" class=\"title\">The quick brown fox jumped?</h1>\n    </div>\n  </div>\n  <div class=\"options\" layout=\"row center-center\" self=\"bottom\">\n    <span data-ui-field=\"date\">Date N/A</span>\n    <button data-ui-field=\"more\" self=\"right\">\n      <i class=\"material-icons\">more_vert</i>\n    </button>\n  </div>\n\n</div>\n",css:"h1 {\n  font-size: 140%;\n  font-weight: 500;\n  margin: 0 4px;\n}\n\n.summary {\n  position: absolute;\n  padding: 4px;\n  left:0; bottom:8px; right: 0;\n}\n.summary {\n  color: white;\n  background-color: rgba(0,0,0,0.6);\n}\n[self*=\"size-1of3\"]  h1 {\n  font-size: 120% !important;\n}\n",controller:function(t){t.create=function(){t.field("container").css("background-image","url("+t.model().cover+")").on("click",function(){window.open(t.model().link)}),t.field("more").on("click",function(){zuix.context("news-options-menu").show()})}},css_applied:!0},{componentId:"pages/home/items_list/item_mini",view:"<div class=\"card\" layout=\"column top-center\">\n\n  <div data-ui-field=\"container\" class=\"cover-wrapper\"></div>\n\n  <div class=\"summary\">\n    <h1 data-ui-field=\"title\" class=\"title\">The little brown fox jumped?</h1>\n  </div>\n  <div class=\"options\" layout=\"row center-center\" self=\"bottom\">\n    <span data-ui-field=\"date\">Date N/A</span>\n    <button data-ui-field=\"more\" self=\"right\">\n      <i class=\"material-icons\">more_vert</i>\n    </button>\n  </div>\n\n</div>\n",css:"h1 {\n  font-size: 120%;\n  font-weight: 500;\n  margin: 0;\n}\n\n.cover-wrapper {\n  margin: 4px;\n  padding-top: 56.25%;\n}\n\n.summary {\n  cursor: pointer;\n  margin-top: 16px;\n}\n",controller:function(t){t.create=function(){t.field("container").css("background-image","url("+t.model().cover+")").on("click",function(){window.open(t.model().link)}),t.view(".summary").on("click",function(){window.open(t.model().link)}),t.field("more").on("click",function(){zuix.context("news-options-menu").show()})}},css_applied:!0}]);
+﻿zuix.bundle(
+/*
+ * zUIx Application Bundle
+ * 
+ * app.bundle.js generated by *zuix-bundler*
+ *   on 2019-12-27T13:06:57.572Z
+ * 
+ * Resource list (14):
+ * 
+ * - [css] 
+ *   ./index.css (_res/style/style-1784725062)
+ * 
+ * - [js] 
+ *   ./service-worker.js (_res/script/script-605580544)
+ * 
+ * - [html] [css] [js] 
+ *   layout/header
+ * 
+ * - [html] [css] [js] 
+ *   layout/footer
+ * 
+ * - [html] [css] [js] 
+ *   pages/home
+ * 
+ * - [html] [css] [js] 
+ *   pages/map
+ * 
+ * - [html] [css] [js] 
+ *   pages/drinks
+ * 
+ * - [html] [css] [js] 
+ *   pages/about
+ * 
+ * - [js] 
+ *   https://zuixjs.github.io/zkit/lib/controllers/view_pager
+ * 
+ * - [html] [js] 
+ *   https://zuixjs.github.io/zkit/lib/controllers/gesture_helper
+ * 
+ * - [html] [css] [js] 
+ *   https://zuixjs.github.io/zkit/lib/components/context_menu
+ * 
+ * - [js] 
+ *   https://zuixjs.github.io/zkit/lib/controllers/header_auto_hide
+ * 
+ * - [html] [js] 
+ *   https://zuixjs.github.io/zkit/lib/controllers/scroll_helper
+ * 
+ * - [html] [css] [js] 
+ *   pages/home/items_list
+ * 
+ * 
+*/
+
+[{"componentId":"_res\u002Fstyle\u002Fstyle-1784725062","view":null,"css":"\u002F* CSS files add styling rules to your content *\u002F\n\nbody {\n    font-family: \"Benton Sans\", \"Helvetica Neue\", helvetica, arial, sans-serif;\n    font-size: 16px;\n    margin: 0; padding: 0;\n    background: black;\n    -webkit-user-select:none;\n    -moz-user-select:none;\n    -ms-user-select:none;\n    user-select:none;\n    overscroll-behavior-y: contain;\n}\n\n.drawer {\n    background: black;\n}\n","controller":null,"using":".\u002Findex.css"},{"componentId":"_res\u002Fscript\u002Fscript-605580544","view":null,"css":null,"controller":"if ('serviceWorker' in navigator) {\n    const p = navigator.serviceWorker\n        .register('.\u002Fsw.js')\n        .then(reg =\u003E console.log('PWA service-worker ready.', reg))\n        .catch(err =\u003E console.error('Could not load service-worker.', err));\n}\n","using":".\u002Fservice-worker.js"},{"componentId":"layout\u002Fheader","view":"\u003Cdiv class=\"header\"\u003E\n  \u003Cdiv class=\"profile pulse\"\u003E\n    \u003Cimg alt=\"Profile Icon\" src=\"images\u002Fprofile_icon.png\"\u003E\n  \u003C\u002Fdiv\u003E\n  \u003Cdiv data-ui-field=\"header-box\" layout=\"row center-center\"\u003E\n    \u003Cdiv class=\"title\"\u003E\n      Home\n    \u003C\u002Fdiv\u003E\n    \u003Cdiv class=\"title\"\u003E\n      Dojazd\n    \u003C\u002Fdiv\u003E\n    \u003Cdiv class=\"title\"\u003E\n      Drineczki\n    \u003C\u002Fdiv\u003E\n    \u003Cdiv class=\"title\"\u003E\n      Inne\n    \u003C\u002Fdiv\u003E\n  \u003C\u002Fdiv\u003E\n\u003C\u002Fdiv\u003E\n\u003Cdiv data-ui-field=\"header-tools\"\u003E\n  \u003Cdiv class=\"topics\" data-ui-load=\"@lib\u002Fcontrollers\u002Fview_pager\" data-ui-options=\"options.topicIndicator\"\u003E\n    \u003Cdiv\u003E\n      Top Stories\n    \u003C\u002Fdiv\u003E\n    \u003Cdiv\u003E\n      World\n    \u003C\u002Fdiv\u003E\n    \u003Cdiv\u003E\n      Europe\n    \u003C\u002Fdiv\u003E\n    \u003Cdiv\u003E\n      Travel\n    \u003C\u002Fdiv\u003E\n  \u003C\u002Fdiv\u003E\n\u003C\u002Fdiv\u003E","css":". {\n  position: fixed;\n  top:0;\n  left:0;\n  right:0;\n  height:auto;\n  background: rgba(0,0,0,0.97);\n  border-bottom: solid 1px rgba(0,0,0,0.25);\n  box-shadow: 0 6px 2px -2px rgba(100,100,100,0.25);\n  z-index: 100;\n}\n\n.header {\n  height: 56px;\n  max-height: 56px;\n}\n\n.title {\n  position: absolute;\n  color: orange;\n  top: 12px;\n  left: 80px;\n  font-size: 180%;\n}\n\n.profile {\n  position: absolute;\n  left: 20px; top: 8px;\n  width: 42px;\n  height: 42px;\n  background: #f5f8fa;\n  border-radius: 50%;\n  border: solid 1px #00aced;\n  overflow: hidden;\n  cursor: pointer;\n}\n.profile img {\n  margin-left: -2px;\n  height: 44px;\n}\n\n.topics {\n  width: 100%;\n  height:40px;\n}\n.topics div {\n  font-size: 16px;\n  height:36px;\n  min-width: 96px;\n  text-align: center;\n  vertical-align: middle;\n  line-height: 36px;\n  border-bottom: solid 4px transparent;\n  cursor: pointer;\n}\n\n.active {\n  color: initial;\n  font-weight: bold;\n  border-bottom: solid 4px #00aced !important;\n}\n\n[data-ui-field=\"header-box\"] {\n  padding-left: 72px;\n  padding-right: 16px;\n  height: 100%;\n}\n\n\u002F* Pulse Animation from https:\u002F\u002Fcodepen.io\u002Folam\u002Fpen\u002Fzcqea *\u002F\n\n.pulse {\n  box-shadow: 0 0 0 rgba(204,169,44, 0.4);\n  animation: pulse 2s infinite;\n}\n.pulse:hover {\n  animation: none;\n}\n\n@-webkit-keyframes pulse {\n  0% {\n    -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);\n  }\n  70% {\n    -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0);\n  }\n  100% {\n    -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);\n  }\n}\n@keyframes pulse {\n  0% {\n    -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);\n    box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);\n  }\n  70% {\n    -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);\n    box-shadow: 0 0 0 10px rgba(204,169,44, 0);\n  }\n  100% {\n    -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);\n    box-shadow: 0 0 0 0 rgba(204,169,44, 0);\n  }\n}\n","controller":function (){}},{"componentId":"layout\u002Ffooter","view":"\u003Cbutton class=\"active\"\u003E\n  \u003Ci class=\"material-icons md-48\"\u003Ehome\u003C\u002Fi\u003E\n\u003C\u002Fbutton\u003E\n\u003Cbutton\u003E\n  \u003Ci class=\"material-icons md-48\"\u003Emap\u003C\u002Fi\u003E\n\u003C\u002Fbutton\u003E\n\u003Cbutton\u003E\n  \u003Ci class=\"material-icons md-48\"\u003Elocal_drink\u003C\u002Fi\u003E\n\u003C\u002Fbutton\u003E\n\u003Cbutton\u003E\n  \u003Ci class=\"material-icons md-48\"\u003Eaudiotrack\u003C\u002Fi\u003E\n\u003C\u002Fbutton\u003E","css":". {\n    position: fixed;\n    left:0; bottom:0; right: 0;\n    height: 56px;\n    \u002F* background: rgba(240,240,240,0.97); *\u002F\n    background: rgba(0,0,0,0.97);\n    border-top: solid 1px rgba(0,0,0,0.25);\n    box-shadow: 0 -6px 2px -2px rgba(100,100,100,0.25);\n    text-align: center;\n    z-index: 100;\n    overflow: hidden;\n}\n\nbutton {\n    padding: 12px;\n    max-height: 56px;\n    margin-left: 8px;\n    margin-right: 8px;\n    background: transparent;\n    border: none;\n    border-radius: 8px;\n    color: rgba(240,240,240,0.5);\n    -webkit-transition: all .3s; \u002F* Safari *\u002F\n    transition: all .3s;\n}\nbutton:hover {\n    background: rgba(255,255,255,0.25);\n}\nbutton:focus {outline:0;}\nbutton i {font-size: 32px !important;}\n\n.active {\n    transform: scale(1.2);\n    color: orange;\n    text-shadow:\n            1px 1px 0 orange,\n            -1px -1px 0 orange,\n            1px -1px 0 orange,\n            -1px 1px 0 orange,\n            1px 1px 0 orange;\n}\n","controller":function (){}},{"componentId":"pages\u002Fhome","view":"\u003Cdiv data-ui-load=\"@lib\u002Fcontrollers\u002Fview_pager\" data-ui-options=\"options.viewPager\" class=\"feed-pager\"\n    draggable=\"false\"\u003E\n\n    \u003C!-- TOP STORIES --\u003E\n    \u003Csection class=\"content\" data-ui-load=\"@lib\u002Fcontrollers\u002Fheader_auto_hide\" data-ui-options=\"options.autoHidingBars\"\u003E\n\n        \u003Cdiv data-ui-load=\"pages\u002Fhome\u002Fitems_list\" data-o-rss=\"http:\u002F\u002Frss.cnn.com\u002Frss\u002Fedition.rss\"\u003E\u003C\u002Fdiv\u003E\n\n    \u003C\u002Fsection\u003E\n\n    \u003C!-- WORLD --\u003E\n    \u003Csection class=\"content\" data-ui-load=\"@lib\u002Fcontrollers\u002Fheader_auto_hide\" data-ui-options=\"options.autoHidingBars\"\u003E\n\n        \u003Cdiv data-ui-load=\"pages\u002Fhome\u002Fitems_list\" data-o-rss=\"http:\u002F\u002Frss.cnn.com\u002Frss\u002Fedition_world.rss\"\u003E\u003C\u002Fdiv\u003E\n\n    \u003C\u002Fsection\u003E\n\n    \u003C!-- EUROPE --\u003E\n    \u003Csection class=\"content\" data-ui-load=\"@lib\u002Fcontrollers\u002Fheader_auto_hide\" data-ui-options=\"options.autoHidingBars\"\u003E\n\n        \u003Cdiv data-ui-load=\"pages\u002Fhome\u002Fitems_list\" data-o-rss=\"http:\u002F\u002Frss.cnn.com\u002Frss\u002Fedition_europe.rss\"\u003E\u003C\u002Fdiv\u003E\n\n    \u003C\u002Fsection\u003E\n\n    \u003C!-- TRAVEL --\u003E\n    \u003Csection class=\"content\" data-ui-load=\"@lib\u002Fcontrollers\u002Fheader_auto_hide\" data-ui-options=\"options.autoHidingBars\"\u003E\n\n        \u003Cdiv data-ui-load=\"pages\u002Fhome\u002Fitems_list\" data-o-rss=\"http:\u002F\u002Frss.cnn.com\u002Frss\u002Fedition_travel.rss\"\u003E\u003C\u002Fdiv\u003E\n\n    \u003C\u002Fsection\u003E\n\n\u003C\u002Fdiv\u003E\n\u003Cdiv data-ui-load=\"@lib\u002Fcomponents\u002Fcontext_menu\" data-ui-context=\"news-options-menu\"\u003E\n    \u003Cdiv data-ui-field=\"menu\"\u003E\n        \u003Cbutton layout=\"row center-left\"\u003E\n            \u003Ci class=\"material-icons\"\u003Ebookmark_border\u003C\u002Fi\u003E\n            \u003Cspan\u003ESave for later\u003C\u002Fspan\u003E\n        \u003C\u002Fbutton\u003E\n        \u003Cbutton layout=\"row center-left\"\u003E\n            \u003Ci class=\"material-icons\"\u003Eshare\u003C\u002Fi\u003E\n            \u003Cspan\u003EShare\u003C\u002Fspan\u003E\n        \u003C\u002Fbutton\u003E\n        \u003Cbutton layout=\"row center-left\"\u003E\n            \u003Ci class=\"material-icons\"\u003Eopen_in_new\u003C\u002Fi\u003E\n            \u003Cspan\u003EOpen link\u003C\u002Fspan\u003E\n        \u003C\u002Fbutton\u003E\n        \u003Cbutton layout=\"row center-left\"\u003E\n            \u003Ci class=\"material-icons\"\u003Enot_interested\u003C\u002Fi\u003E\n            \u003Cspan\u003EHide items from this source\u003C\u002Fspan\u003E\n        \u003C\u002Fbutton\u003E\n        \u003Cbutton layout=\"row center-left\"\u003E\n            \u003Ci class=\"material-icons\"\u003Ethumb_up\u003C\u002Fi\u003E\n            \u003Cspan\u003EMore like this\u003C\u002Fspan\u003E\n        \u003C\u002Fbutton\u003E\n        \u003Cbutton layout=\"row center-left\"\u003E\n            \u003Ci class=\"material-icons\"\u003Ethumb_down\u003C\u002Fi\u003E\n            \u003Cspan\u003ELess like this\u003C\u002Fspan\u003E\n        \u003C\u002Fbutton\u003E\n    \u003C\u002Fdiv\u003E\n\u003C\u002Fdiv\u003E","css":".content {\n    font-family: serif;\n    font-size: 110%;\n    width: 100vw;\n    height: 100vh;\n    overflow-y: scroll;\n}\n\n.feed-pager {\n    height: 100vh;\n    z-index: 0;\n}\n","controller":function (){}},{"componentId":"pages\u002Fmap","view":"\u003C!-- \u003Cdiv self=\"stretch-stretch\" layout=\"row center-center\"\u003E --\u003E\n\u003Cdiv class=\"box\"\u003E\u003Ciframe\n        src=\"https:\u002F\u002Fwww.google.com\u002Fmaps\u002Fembed?pb=!1m18!1m12!1m3!1d5893.164393385241!2d19.3683209300737!3d51.73990120286878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471a357e77a8b8cd%3A0x687adb8ad1a4049f!2zS29sYXJza2EgMTY3LCA5MC0wMDEgxYHDs2TFug!5e0!3m2!1sen!2spl!4v1576932228172!5m2!1sen!2spl\"\n        allowfullscreen\u003E\u003C\u002Fiframe\u003E\n\u003C\u002Fdiv\u003E\n\u003C!-- \u003C\u002Fdiv\u003E --\u003E","css":"\u002F* .box {\n    position: relative;\n    padding-bottom: 10%;\n    padding-top: 25px;\n    height: 100%;\n    overflow: hidden;\n  }\n   *\u002F\n  .box iframe {\n    width:100%;\n    height:100%;\n    margin:0;\n    padding-top:20vw;\n    padding-bottom:10vw;\n\n    position:absolute;\n  }\n  ","controller":function (){}},{"componentId":"pages\u002Fdrinks","view":"\u003Cdiv class=\"message\" self=\"stretch-stretch\" layout=\"row center-center\"\u003E\n    \u003Cdiv\u003EDrineczki\u003C\u002Fdiv\u003E\n\u003C\u002Fdiv\u003E","css":".message {\n    color: darkgrey;\n    min-height: 100vh;\n    width: 100vw;\n    font-size: 200%;\n}\n.message i {\n    margin-left: 16px;\n    color: darkgrey;\n    font-size: 150%;\n}\n","controller":function (){}},{"componentId":"pages\u002Fabout","view":"\u003Cdiv self=\"size-small center-center\"\u003E\n\n    \u003Ch2\u003EPrawilna playlista\u003C\u002Fh2\u003E\n\n    \u003Ciframe src=\"https:\u002F\u002Fopen.spotify.com\u002Fembed\u002Fplaylist\u002F0w4Dh5V1zZo4cKWxoJp7Lx\" width=\"300\" height=\"380\"\n        frameborder=\"0\" allowtransparency=\"true\" allow=\"encrypted-media\"\u003E\u003C\u002Fiframe\u003E\n\n\u003C\u002Fdiv\u003E","css":". {\n    color: black;\n    padding: 24px;\n    margin-top: 64px;\n    margin-bottom: 64px;\n}\n\nh1,h2,h3 {\n    color: grey;\n}\n\nh2 {\n    font-size: 130%;\n}\n\na, a:visited, a:hover {\n    font-weight: 700;\n    color: darkorange;\n    text-decoration: none;\n}\n\n.small {\n    font-size: 90%;\n}\n","controller":function (){}},{"componentId":"https:\u002F\u002Fzuixjs.github.io\u002Fzkit\u002Flib\u002Fcontrollers\u002Fview_pager","controller":function (cp) {
+    const DEFAULT_PAGE_TRANSITION = {duration: 0.3, easing: 'ease'};
+    const BOUNDARY_HIT_EASING = 'cubic-bezier(0.0,0.1,0.35,1.1)';
+    const DECELERATE_SCROLL_EASING = 'cubic-bezier(0.0,0.1,0.35,1.0)';
+    const LAYOUT_HORIZONTAL = 'horizontal';
+    const LAYOUT_VERTICAL = 'vertical';
+    const SLIDE_DIRECTION_FORWARD = 1;
+    const SLIDE_DIRECTION_BACKWARD = -1;
+    // state vars
+    let currentPage = -1;
+    let oldPage = 0;
+    let slideTimeout = null;
+    let slideIntervalMs = 3000;
+    let slideDirection = SLIDE_DIRECTION_FORWARD;
+    let updateLayoutTimeout = null;
+    let inputCaptured = false;
+    // options
+    let layoutType = LAYOUT_HORIZONTAL;
+    let enableAutoSlide = false;
+    let enablePaging = false;
+    let holdTouch = false;
+    let passiveMode = true;
+    let startGap = 0;
+    let hideOffViewElements = false;
+    // status
+    let isDragging = false;
+    let wasVisible = false;
+    let isLazyContainer = false;
+    let isFlying = false;
+    let actualViewSize = {
+        width: 0,
+        height: 0
+    };
+    // timers
+    let componentizeInterval = null;
+    let componentizeTimeout = null;
+    /** @typedef {ZxQuery} */
+    let pageList = null;
+    // Create a mutation observer instance to watch for child add/remove
+    const domObserver = new MutationObserver(function(a, b) {
+        // update child list and re-layout
+        pageList = cp.view().children();
+        updateLayout();
+    });
+
+    cp.init = function() {
+        let options = cp.options();
+        let view = cp.view();
+        options.html = false;
+        options.css = false;
+        enablePaging = (options.enablePaging === true || (view.attr('data-o-paging') === 'true'));
+        enableAutoSlide = (options.autoSlide === true || (view.attr('data-o-slide') === 'true'));
+        passiveMode = (options.passive !== false && (view.attr('data-o-passive') !== 'false'));
+        holdTouch = (options.holdTouch === true || (view.attr('data-o-hold') === 'true'));
+        startGap = (options.startGap || view.attr('data-o-startgap'));
+        if (options.verticalLayout === true || (view.attr('data-o-layout') === LAYOUT_VERTICAL)) {
+            layoutType = LAYOUT_VERTICAL;
+        }
+        if (options.slideInterval != null) {
+            slideIntervalMs = options.slideInterval;
+        } else if (view.attr('data-o-slide-interval') != null) {
+            slideIntervalMs = parseInt(view.attr('data-o-slide-interval'));
+        }
+        hideOffViewElements = (options.autohide === true || (view.attr('data-o-autohide') === 'true'));
+    };
+
+    cp.create = function() {
+        // enable absolute positioning for items in this view
+        const view = cp.view().css({
+            'position': 'relative',
+            'overflow': 'hidden'
+        });
+        // get child items (pages)
+        pageList = view.children();
+        // loading of images could change elements size, so layout update might be required
+        view.find('img').each(function(i, el) {
+            this.one('load', updateLayout);
+        });
+        // re-arrange view on layout changes
+        zuix.$(window)
+            .on('resize', function() {
+                layoutElements(true);
+            }).on('orientationchange', function() {
+            layoutElements(true);
+        });
+        // Options for the observer (which mutations to observe)
+        // Register DOM mutation observer callback
+        domObserver.observe(view.get(), {
+            attributes: false,
+            childList: true,
+            subtree: true,
+            characterData: false
+        });
+        updateLayout();
+        // Set starting page
+        setPage(0);
+        let tapTimeout = null;
+        // gestures handling - load gesture_helper controller
+        zuix.load('@lib/controllers/gesture_helper', {
+            view: view,
+            passive: passiveMode,
+            startGap: startGap,
+            on: {
+                'gesture:touch': function(e, tp) {
+                    inputCaptured = false;
+                    stopAutoSlide();
+                    dragStart();
+                    if (holdTouch) tp.cancel();
+                },
+                'gesture:release': function(e, tp) {
+                    dragStop(tp);
+                    resetAutoSlide();
+                },
+                'gesture:tap': function(e, tp) {
+                    if (tapTimeout != null) {
+                        clearTimeout(tapTimeout);
+                    }
+                    tapTimeout = setTimeout(function() {
+                        handleTap(e, tp);
+                    }, 50);
+                },
+                'gesture:pan': handlePan,
+                'gesture:swipe': handleSwipe
+            },
+            ready: function() {
+                layoutElements(true);
+            }
+        });
+        // public component methods
+        cp.expose('page', function(number) {
+            if (number == null) {
+                return parseInt(currentPage);
+            } else setPage(number, DEFAULT_PAGE_TRANSITION);
+        }).expose('get', function(number) {
+            return pageList.eq(number);
+        }).expose('slide', function(activate) {
+            if (activate === true) {
+                resetAutoSlide();
+            } else stopAutoSlide();
+        }).expose('layout', function(mode) {
+            if (mode == null) {
+                return layoutType;
+            } else if (mode === LAYOUT_VERTICAL) {
+                layoutType = LAYOUT_VERTICAL;
+            } else layoutType = LAYOUT_HORIZONTAL;
+            updateLayout();
+        }).expose('refresh', function() {
+            layoutElements(true);
+        }).expose('next', next)
+            .expose('prev', prev)
+            .expose('last', last)
+            .expose('first', first);
+    };
+
+    cp.destroy = function() {
+        if (domObserver != null) {
+            domObserver.disconnect();
+        }
+    };
+
+    function updateLayout() {
+        if (updateLayoutTimeout != null) {
+            clearTimeout(updateLayoutTimeout);
+        }
+        updateLayoutTimeout = setTimeout(layoutElements, 250);
+    }
+    function layoutElements(force) {
+        if (!force && (isDragging || componentizeInterval != null)) {
+            updateLayout();
+            return;
+        }
+        // init elements
+        pageList.each(function(i, el) {
+            this.css({
+                'position': 'absolute',
+                'left': 0,
+                'top': 0
+            });
+        });
+        // measure
+        const viewSize = getSize(cp.view().get());
+        if (viewSize.width === 0 || viewSize.height === 0) {
+            if (viewSize.height === 0 && cp.view().position().visible) {
+                let maxHeight = 0;
+                // guess and set view_pager height
+                pageList.each(function(i, el) {
+                    let size = getSize(el);
+                    if (size.height > maxHeight) {
+                        maxHeight = size.height;
+                    }
+                });
+                if (viewSize.height < maxHeight) {
+                    cp.view().css('height', maxHeight + 'px');
+                }
+            }
+            // cannot measure view, try again later
+            updateLayout();
+            return;
+        }
+        actualViewSize = viewSize;
+        // position elements
+        let offset = 0;
+        let isLazy = false;
+        pageList.each(function(i, el) {
+            let size = getSize(el);
+            if (layoutType === LAYOUT_HORIZONTAL) {
+                let centerY = (viewSize.height-size.height)/2;
+                if (centerY < 0) centerY = 0; // TODO: centering with negative offset was not working
+                transition(this, DEFAULT_PAGE_TRANSITION);
+                position(this, offset, centerY);
+                offset += size.width;
+            } else {
+                let centerX = (viewSize.width-size.width)/2;
+                if (centerX < 0) centerX = 0; // TODO: centering with negative offset was not working
+                transition(this, DEFAULT_PAGE_TRANSITION);
+                position(this, centerX, offset);
+                offset += size.height;
+            }
+            if (this.attr('data-ui-lazyload') === 'true'
+                || this.find('[data-ui-lazyload="true"]').length() > 0) {
+                isLazy = true;
+            }
+        });
+        isLazyContainer = isLazy;
+
+        // focus to current page
+        setPage(currentPage);
+        // start automatic slide
+        if (pageList.length() > 1) {
+            resetAutoSlide();
+        }
+    }
+
+    function next() {
+        let isLast = false;
+        let page = parseInt(currentPage)+1;
+        if (page >= pageList.length()) {
+            page = pageList.length()-1;
+            isLast = true;
+        }
+        setPage(page, DEFAULT_PAGE_TRANSITION);
+        return !isLast;
+    }
+    function prev() {
+        let isFirst = false;
+        let page = parseInt(currentPage)-1;
+        if (page < 0) {
+            page = 0;
+            isFirst = true;
+        }
+        setPage(page, DEFAULT_PAGE_TRANSITION);
+        return !isFirst;
+    }
+    function first() {
+        setPage(0, DEFAULT_PAGE_TRANSITION);
+    }
+    function last() {
+        setPage(pageList.length()-1, DEFAULT_PAGE_TRANSITION);
+    }
+
+    function slideNext() {
+        setPage(parseInt(currentPage) + slideDirection, DEFAULT_PAGE_TRANSITION);
+        resetAutoSlide();
+    }
+
+    function resetAutoSlide(timeout) {
+        stopAutoSlide();
+        if (enableAutoSlide === true) {
+            const visible = cp.view().position().visible;
+            if (visible) {
+                if (!wasVisible) {
+                    zuix.componentize(cp.view());
+                }
+                slideTimeout = setTimeout(slideNext, slideIntervalMs);
+            } else {
+                slideTimeout = setTimeout(resetAutoSlide, 500);
+            }
+            wasVisible = visible;
+        }
+    }
+    function stopAutoSlide() {
+        if (slideTimeout != null) {
+            clearTimeout(slideTimeout);
+        }
+    }
+
+    function getItemIndexAt(x, y) {
+        let focusedPage = 0;
+        pageList.each(function(i, el) {
+            let data = getData(this);
+            focusedPage = i;
+            const size = getSize(el);
+            const rect = {
+                x: data.position.x,
+                y: data.position.y,
+                w: size.width,
+                h: size.height
+            };
+            if ((layoutType === LAYOUT_HORIZONTAL && (rect.x > x || rect.x+rect.w > x))
+                || (layoutType === LAYOUT_VERTICAL && (rect.y > y || rect.y+rect.h > y))) {
+                return false;
+            }
+        });
+        return focusedPage;
+    }
+
+    function focusPageAt(tp, transition) {
+        let vp = cp.view().position();
+        let page = getItemIndexAt(tp.x-vp.x, tp.y-vp.y);
+        setPage(page, transition != null ? transition : DEFAULT_PAGE_TRANSITION);
+    }
+
+    function setPage(n, transition) {
+        oldPage = currentPage;
+        if (n < 0) {
+            slideDirection = SLIDE_DIRECTION_FORWARD;
+            n = 0;
+        } else if (n >= pageList.length()) {
+            slideDirection = SLIDE_DIRECTION_BACKWARD;
+            n = pageList.length() - 1;
+        } else if (n !== currentPage) {
+            slideDirection = (currentPage < n) ? SLIDE_DIRECTION_FORWARD : SLIDE_DIRECTION_BACKWARD;
+        }
+        currentPage = n;
+        if (currentPage != oldPage) {
+            pageList.eq(currentPage).css('z-index', 1);
+            if (oldPage !== -1) {
+                pageList.eq(oldPage).css('z-index', 0);
+            }
+            cp.trigger('page:change', {in: currentPage, out: oldPage});
+        }
+        const el = pageList.eq(n);
+        const data = getData(el);
+        const elSize = getSize(el.get());
+        const focusPoint = {
+            x: (actualViewSize.width - elSize.width) / 2 - data.position.x,
+            y: (actualViewSize.height - elSize.height) / 2 - data.position.y
+        };
+        flyTo(focusPoint, transition);
+        resetAutoSlide();
+    }
+
+    function flyTo(targetPoint, transition) {
+        const spec = getFrameSpec();
+        const firstData = getData(pageList.eq(0));
+        const lastPage = pageList.eq(pageList.length() - 1);
+        const lastData = getData(lastPage);
+
+        pageList.each(function(i, el) {
+            const data = getData(this);
+            const frameSpec = getFrameSpec();
+            data.dragStart = {
+                x: frameSpec.marginLeft + data.position.x,
+                y: frameSpec.marginTop + data.position.y
+            };
+        });
+
+        if (layoutType === LAYOUT_HORIZONTAL) {
+            let x = targetPoint.x;
+            if (firstData.position.x + targetPoint.x > 0) {
+                x = -firstData.position.x;
+            } else {
+                if (lastData.position.x + lastPage.get().offsetWidth + targetPoint.x < actualViewSize.width) {
+                    x = -spec.marginLeft*2 + actualViewSize.width - (lastData.position.x + lastPage.get().offsetWidth);
+                }
+            }
+            // check if boundary was adjusted and adjust flying duration accordingly
+            if (targetPoint.x-x !== 0 && transition != null) {
+                transition = {
+                    duration: transition.duration * (x / targetPoint.x),
+                    easing: BOUNDARY_HIT_EASING
+                };
+                if (!isFinite(transition.duration) || transition.duration < 0) {
+                    transition.duration = 0.2;
+                }
+            }
+            dragShift(x, 0, transition);
+        } else {
+            let y = targetPoint.y;
+            if (firstData.position.y + targetPoint.y > 0) {
+                y = -firstData.position.y;
+            } else {
+                if (lastData.position.y + lastPage.get().offsetHeight + targetPoint.y < actualViewSize.height) {
+                    y = -spec.marginTop*2 + actualViewSize.height - (lastData.position.y + lastPage.get().offsetHeight);
+                }
+            }
+            // check if boundary was adjusted and adjust flying duration accordingly
+            if (targetPoint.y-y !== 0 && transition != null) {
+                transition = {
+                    duration: transition.duration * (y / targetPoint.y),
+                    easing: BOUNDARY_HIT_EASING
+                };
+                if (!isFinite(transition.duration) || transition.duration < 0) {
+                    transition.duration = 0.2;
+                }
+            }
+            dragShift(0, y, transition);
+        }
+        isFlying = true;
+    }
+
+    function getSize(el) {
+        const rect = el.getBoundingClientRect();
+        const width = rect.width || el.offsetWidth;
+        const height = el.offsetHeight || rect.height;
+        return {width: width, height: height};
+    }
+
+    function getData(el) {
+        const data = el.get().data = el.get().data || {};
+        data.position = data.position || {x: 0, y: 0};
+        return data;
+    }
+
+    function componentizeStart() {
+        if (isLazyContainer) {
+            componentizeStop();
+            if (componentizeTimeout != null) {
+                clearTimeout(componentizeTimeout);
+            }
+            if (componentizeInterval != null) {
+                clearInterval(componentizeInterval);
+            }
+            componentizeInterval = setInterval(function() {
+                if (hideOffViewElements) {
+                    pageList.each(function(i, el) {
+                        // hide elements if not inside the view_pager
+                        const computed = window.getComputedStyle(el, null);
+                        const size = {
+                            width: parseFloat(computed.width.replace('px', '')),
+                            height: parseFloat(computed.height.replace('px', ''))
+                        };
+                        const x = parseFloat(computed.left.replace('px', ''));
+                        const y = parseFloat(computed.top.replace('px', ''));
+                        if (size.width > 0 && size.height > 0) {
+                            el = zuix.$(el);
+                            // check if element is inside the view_pager
+                            if (x + size.width < 0 || y + size.height < 0 || x > actualViewSize.width || y > actualViewSize.height) {
+                                if (el.visibility() !== 'hidden') {
+                                    el.visibility('hidden');
+                                }
+                            } else if (el.visibility() !== 'visible') {
+                                el.visibility('visible');
+                            }
+                        }
+                    });
+                }
+                zuix.componentize(cp.view());
+            }, 10);
+        }
+    }
+
+    function componentizeStop() {
+        if (isLazyContainer && componentizeTimeout == null) {
+            clearInterval(componentizeInterval);
+        }
+    }
+
+    function dragStart() {
+        isDragging = true;
+        isFlying = false;
+        pageList.each(function(i, el) {
+            const data = getData(this);
+            const frameSpec = getFrameSpec();
+            const computed = window.getComputedStyle(el, null);
+            data.position.x = parseFloat(computed.left.replace('px', ''));
+            data.position.y = parseFloat(computed.top.replace('px', ''));
+            this.css('left', data.position.x+'px');
+            this.css('top', data.position.y+'px');
+            data.dragStart = {x: frameSpec.marginLeft+data.position.x, y: frameSpec.marginTop+data.position.y};
+        });
+    }
+
+    function getFrameSpec() {
+        const spec = {
+            w: 0,
+            h: 0,
+            marginLeft: 0,
+            marginTop: 0
+        };
+        pageList.each(function(i, el) {
+            const size = getSize(el);
+            spec.w += size.width;
+            spec.h += size.height;
+        });
+        if (layoutType === LAYOUT_HORIZONTAL && spec.w < actualViewSize.width) {
+            spec.marginLeft = (actualViewSize.width - spec.w) / 2;
+        } else if (layoutType === LAYOUT_VERTICAL && spec.h < actualViewSize.height) {
+            spec.marginTop = (actualViewSize.height - spec.h) / 2;
+        }
+        return spec;
+    }
+
+    function dragShift(x, y, tr) {
+        if (tr != null) {
+            componentizeStart();
+            componentizeTimeout = setTimeout(function() {
+                componentizeTimeout = null;
+                componentizeStop();
+            }, tr.duration*1000);
+            tr = tr.duration+'s '+tr.easing;
+        } else if (isLazyContainer) {
+            zuix.componentize(cp.view());
+        }
+        pageList.each(function(i, el) {
+            const data = getData(this);
+            transition(this, tr);
+            position(this, data.dragStart.x+x, data.dragStart.y+y);
+        });
+    }
+
+    function dragStop(tp) {
+        if (tp != null) {
+            tp.done = true;
+            // decelerate
+            if (!isFlying && ((layoutType === LAYOUT_HORIZONTAL && tp.scrollIntent() === 'horizontal') || (layoutType === LAYOUT_VERTICAL && tp.scrollIntent() === 'vertical'))) {
+                decelerate(null, tp);
+            }
+        }
+        componentizeStop();
+        isDragging = false;
+    }
+
+    // Gesture handling
+
+    function handlePan(e, tp) {
+        if (!tp.scrollIntent() || tp.done) {
+            return;
+        }
+        if (inputCaptured
+            || ((tp.direction === 'left' || tp.direction === 'right') && layoutType === LAYOUT_HORIZONTAL)
+            || ((tp.direction === 'up' || tp.direction === 'down') && layoutType === LAYOUT_VERTICAL)) {
+            // capture click event
+            if (!inputCaptured && tp.event.touches == null) {
+                cp.view().get().addEventListener('click', function(e) {
+                    if (inputCaptured) {
+                        inputCaptured = false;
+                        e.cancelBubble = true;
+                        // TODO: 'preventDefault' should not be used with passive listeners
+                        e.preventDefault();
+                    }
+                    // release mouse click capture
+                    cp.view().get().removeEventListener('click', this, true);
+                }, true);
+            }
+            inputCaptured = true;
+            tp.cancel();
+        }
+        const spec = getFrameSpec();
+        if (layoutType === LAYOUT_HORIZONTAL && tp.scrollIntent() === 'horizontal') {
+            dragShift(tp.shiftX-spec.marginLeft, 0);
+        } else if (layoutType === LAYOUT_VERTICAL && tp.scrollIntent() === 'vertical') {
+            dragShift(0, tp.shiftY-spec.marginTop);
+        }
+    }
+
+    function handleTap(e, tp) {
+        let vp = cp.view().position();
+        let page = getItemIndexAt(tp.x-vp.x, tp.y-vp.y);
+        cp.trigger('page:tap', page, tp);
+        if (enablePaging) focusPageAt(tp);
+    }
+
+    function decelerate(e, tp) {
+        const minSpeed = 0.01;
+        const minStepSpeed = 1.25;
+        const accelerationFactor = Math.exp(Math.abs(tp.velocity / (Math.abs(tp.velocity) <= minStepSpeed ? 5 : 2))+1);
+        let friction = 0.990 + (accelerationFactor / 1000);
+        if (friction > 0.999) {
+            friction = 0.999;
+        }
+        const duration = Math.log(minSpeed / Math.abs(tp.velocity)) / Math.log(friction);
+        const decelerateEasing = {
+            duration: duration / 1000, // ms to s
+            easing: DECELERATE_SCROLL_EASING
+        };
+        const fly = function(destination, shift) {
+            if (enablePaging) {
+                decelerateEasing.duration *= 0.5;
+                if (layoutType === LAYOUT_HORIZONTAL) {
+                    focusPageAt({
+                        x: destination.x - shift.x,
+                        y: destination.y
+                    }, decelerateEasing);
+                } else {
+                    focusPageAt({
+                        x: destination.x,
+                        y: destination.y - shift.y
+                    }, decelerateEasing);
+                }
+            } else {
+                flyTo(shift, decelerateEasing);
+            }
+        };
+        const flyingDistance = tp.stepSpeed < minStepSpeed ? 0 : accelerationFactor * tp.velocity * (1 - Math.pow(friction, duration + 1)) / (1 - friction);
+        const ap = {
+            x: flyingDistance,
+            y: flyingDistance
+        };
+        if (willFly(tp) || e == null) fly(tp, ap);
+    }
+
+    function willFly(tp) {
+        return (!enablePaging || Math.abs(tp.velocity) > 1.25);
+    }
+
+    function handleSwipe(e, tp) {
+        if (willFly(tp)) {
+            return;
+        }
+        switch (tp.direction) {
+            case 'right':
+                if (layoutType === LAYOUT_HORIZONTAL) prev();
+                break;
+            case 'left':
+                if (layoutType === LAYOUT_HORIZONTAL) next();
+                break;
+            case 'down':
+                if (layoutType === LAYOUT_VERTICAL) prev();
+                break;
+            case 'up':
+                if (layoutType === LAYOUT_VERTICAL) next();
+                break;
+        }
+    }
+
+    function position(el, x, y) {
+        const data = getData(el);
+        if (!isNaN(x) && !isNaN(y)) {
+            data.position = {'x': x, 'y': y};
+            el.css({'left': data.position.x+'px', 'top': data.position.y+'px'});
+        }
+        return data;
+    }
+
+    function transition(el, transition) {
+        if (transition == null) {
+            transition = 'none';
+        }
+        el.css({
+            '-webkit-transition': transition,
+            '-moz-transition': transition,
+            '-ms-transition': transition,
+            '-o-transition': transition,
+            'transition': transition
+        });
+    }
+}},{"componentId":"https:\u002F\u002Fzuixjs.github.io\u002Fzkit\u002Flib\u002Fcontrollers\u002Fgesture_helper","view":"\n    \u003Cdiv class=\"active\" style=\"z-index: 1; transition: none; left: 528px; top: 0px; position: absolute;\"\u003E\n      Top Stories\n    \u003C\u002Fdiv\u003E\n    \u003Cdiv style=\"transition: none; left: 624px; top: 0px; position: absolute;\"\u003E\n      World\n    \u003C\u002Fdiv\u003E\n    \u003Cdiv style=\"transition: none; left: 720px; top: 0px; position: absolute;\"\u003E\n      Europe\n    \u003C\u002Fdiv\u003E\n    \u003Cdiv style=\"transition: none; left: 816px; top: 0px; position: absolute;\"\u003E\n      Travel\n    \u003C\u002Fdiv\u003E\n  ","css":null,"controller":function (cp) {
+    const SCROLL_MODE_NONE = 0;
+    const SCROLL_MODE_HORIZONTAL = 1;
+    const SCROLL_MODE_VERTICAL = 2;
+    const GESTURE_TAP_TIMEOUT = 750;
+
+    let scrollMode = SCROLL_MODE_NONE;
+    let touchPointer;
+    let ignoreSession = false;
+    let passiveMode = true;
+    let startGap = -1;
+    let currentGesture;
+    let swipeDirection;
+    let speedMeter;
+    let mouseButtonDown = false;
+    let lastTapTime = new Date().getTime();
+
+    // Math.sign Polyfill
+    Math.sign = Math.sign || function(x) {
+        return ((x>0)-(x<0))||+x;
+    };
+
+    cp.init = function() {
+        let view = cp.view();
+        const options = cp.options();
+        options.html = false;
+        options.css = false;
+        passiveMode = (options.passive !== false && (view.attr('data-o-passive') !== 'false'));
+        startGap = (options.startGap || view.attr('data-o-startgap'));
+    };
+
+    cp.create = function() {
+        // TODO: should use event "capturing" instead of "bubbling"
+        cp.view().on('dragstart', {
+            handler: function(e) {
+                if (!ignoreSession && !passiveMode) {
+                    e.preventDefault();
+                }
+            },
+            passive: passiveMode
+        }).on('mousedown', {
+            handler: function(e) {
+                const targetElement = zuix.$(e.target);
+                if (e.which === 1 && targetElement.parent('[class*="no-gesture"]').length() === 0 && e.x > startGap) {
+                    mouseButtonDown = true;
+                    ignoreSession = false;
+                    // targetElement.css('touch-action', 'none');
+                    // TODO: add 'cp.options().preventDrag'
+                    targetElement.get().draggable = false;
+                    touchStart(e, e.x, e.y);
+                } else ignoreSession = true;
+            },
+            passive: passiveMode
+        }).on('mousemove', {
+            handler: function(e) {
+                if (!ignoreSession && mouseButtonDown) {
+                    touchMove(e, e.x, e.y);
+                }
+            },
+            passive: passiveMode
+        }).on('mouseup', function(e) {
+            if (e.which === 1 && !ignoreSession) {
+                mouseButtonDown = false;
+                touchStop(e);
+            }
+        }).on('touchstart', {
+            handler: function(e) {
+                const targetElement = zuix.$(e.target);
+                if (targetElement.parent('[class*="no-gesture"]').length() === 0 && e.touches[0].clientX > startGap) {
+                    ignoreSession = false;
+                    // targetElement.css('touch-action', 'none');
+                    targetElement.get().draggable = false;
+                    touchStart(e, e.touches[0].clientX, e.touches[0].clientY);
+                } else ignoreSession = true;
+            },
+            passive: passiveMode
+        }).on('touchmove', {
+            handler: function(e) {
+                if (!ignoreSession) {
+                    touchMove(e, e.touches[0].clientX, e.touches[0].clientY);
+                }
+            },
+            passive: passiveMode
+        }).on('touchend', function(e) {
+            if (!ignoreSession) {
+                touchStop(e);
+            }
+        });
+    };
+
+    function touchStart(e, x, y) {
+        let timestamp = new Date().getTime();
+        touchPointer = {
+            // original event + cancel method
+            event: e,
+            cancel: function() {
+                touchPointer.event.cancelBubble = true;
+                if (!passiveMode) {
+                    touchPointer.event.preventDefault();
+                }
+            },
+            // initial touch position
+            startX: x,
+            startY: y,
+            startTime: timestamp,
+            // relative movement
+            shiftX: 0,
+            shiftY: 0,
+            endTime: 0,
+            // relative movement at every step
+            stepX: 0,
+            stepY: 0,
+            stepTime: timestamp,
+            // actual position and speed
+            velocity: 0,
+            x: x,
+            y: y,
+            scrollIntent: function() {
+                switch (scrollMode) {
+                    case SCROLL_MODE_HORIZONTAL:
+                        return 'horizontal';
+                    case SCROLL_MODE_VERTICAL:
+                        return 'vertical';
+                }
+                return false;
+            }
+        };
+        speedMeter = speedObserver(touchPointer);
+        cp.trigger('gesture:touch', touchPointer);
+    }
+    function touchMove(e, x, y) {
+        if (touchPointer != null) {
+            touchPointer.event = e;
+            touchPointer.x = x;
+            touchPointer.y = y;
+            touchPointer.shiftX = (x - touchPointer.startX);
+            touchPointer.shiftY = (y - touchPointer.startY);
+            touchPointer.endTime = new Date().getTime();
+            // detect actual gesture
+            let gesture = detectGesture();
+            if (gesture != null && currentGesture !== false) {
+                if (swipeDirection != null && swipeDirection !== touchPointer.direction) {
+                    // stop gesture detection if not coherent
+                    currentGesture = false;
+                    swipeDirection = 'cancel';
+                } else {
+                    currentGesture = gesture;
+                    swipeDirection = touchPointer.direction;
+                }
+            }
+            cp.trigger('gesture:pan', touchPointer);
+        }
+    }
+
+    function touchStop(e) {
+        if (touchPointer != null) {
+            speedMeter.update();
+            touchPointer.event = e;
+            if (currentGesture == null) {
+                currentGesture = detectGesture();
+            }
+            if (currentGesture != null && currentGesture !== false) {
+                cp.trigger(currentGesture, touchPointer);
+            }
+        }
+        cp.trigger('gesture:release', touchPointer);
+        scrollMode = SCROLL_MODE_NONE;
+        swipeDirection = null;
+        currentGesture = null;
+        touchPointer = null;
+    }
+
+    function detectGesture() {
+        let gesture = null;
+        // update touchPointer.velocity data
+        speedMeter.update();
+        // update tap gesture and swipe direction
+        const minStepDistance = 2; // <--- !!! this should not be greater than 2 for best performance
+        const angle = Math.atan2(touchPointer.shiftY-touchPointer.stepY, touchPointer.shiftX-touchPointer.stepX) * 180 / Math.PI;
+        if ((touchPointer.shiftX) === 0 && (touchPointer.shiftY) === 0 && touchPointer.startTime > lastTapTime+100 && touchPointer.stepTime < GESTURE_TAP_TIMEOUT) {
+            // gesture TAP
+            lastTapTime = new Date().getTime();
+            gesture = 'gesture:tap';
+        } else if ((scrollMode === SCROLL_MODE_NONE || scrollMode === SCROLL_MODE_HORIZONTAL)
+            && touchPointer.stepDistance > minStepDistance && ((angle >= 135 && angle <= 180) || (angle >= -180 && angle <= -135))) {
+            // gesture swipe RIGHT
+            touchPointer.direction = 'left';
+            gesture = 'gesture:swipe';
+            scrollMode = SCROLL_MODE_HORIZONTAL;
+        } else if ((scrollMode === SCROLL_MODE_NONE || scrollMode === SCROLL_MODE_HORIZONTAL)
+            && touchPointer.stepDistance > minStepDistance && ((angle >= 0 && angle <= 45) || (angle >= -45 && angle < 0))) {
+            // gesture swipe LEFT
+            touchPointer.direction = 'right';
+            gesture = 'gesture:swipe';
+            scrollMode = SCROLL_MODE_HORIZONTAL;
+        } else if ((scrollMode === SCROLL_MODE_NONE || scrollMode === SCROLL_MODE_VERTICAL)
+            && touchPointer.stepDistance > minStepDistance && (angle > 45 && angle < 135)) {
+            // gesture swipe UP
+            touchPointer.direction = 'down';
+            gesture = 'gesture:swipe';
+            scrollMode = SCROLL_MODE_VERTICAL;
+        } else if ((scrollMode === SCROLL_MODE_NONE || scrollMode === SCROLL_MODE_VERTICAL)
+            && touchPointer.stepDistance > minStepDistance && (angle > -135 && angle < -45)) {
+            // gesture swipe DOWN
+            touchPointer.direction = 'up';
+            gesture = 'gesture:swipe';
+            scrollMode = SCROLL_MODE_VERTICAL;
+        }
+        // reset touch step data
+        if (touchPointer.stepDistance > minStepDistance) {
+            speedMeter.step();
+        }
+        return gesture;
+    }
+
+    function speedObserver(tp) {
+        let direction;
+        let startData = {
+            time: 0,
+            x: 0, y: 0
+        };
+        let stopData = {
+            time: 0,
+            x: 0, y: 0
+        };
+        let step = function() {
+            tp.stepTime = tp.endTime;
+            tp.stepX = tp.shiftX;
+            tp.stepY = tp.shiftY;
+            tp.stepSpeed = 0;
+            tp.stepDistance = 0;
+        };
+        let reset = function() {
+            // direction changed: reset
+            direction = tp.direction;
+            startData.time = new Date().getTime();
+            startData.x = tp.x;
+            startData.y = tp.y;
+            tp.velocity = 0;
+            tp.distance = 0;
+            step();
+        };
+        reset();
+        return {
+            update: function() {
+                stopData.time = new Date().getTime();
+                stopData.x = tp.x;
+                stopData.y = tp.y;
+                if (direction != null && direction !== tp.direction) {
+                    reset();
+                    return;
+                } else if (direction == null && tp.direction !== direction) {
+                    direction = tp.direction;
+                }
+                const elapsedTime = stopData.time - startData.time;
+                let l = {x: (stopData.x - startData.x), y: (stopData.y - startData.y)};
+                const d = Math.sqrt(l.x*l.x + l.y*l.y);
+                tp.distance = d;
+                // movement speed in px/ms
+                let speed = (d / elapsedTime);
+                // add the direction info
+                tp.velocity = (tp.direction === 'left' || tp.direction === 'up') ? -speed : speed;
+                // update "step" speed data
+                tp.stepTime = (tp.endTime-tp.stepTime);
+                l = {x: (tp.shiftX-tp.stepX), y: (tp.shiftY-tp.stepY)};
+                tp.stepDistance = Math.sqrt(l.x*l.x+l.y*l.y);
+                tp.stepSpeed = (tp.stepDistance / tp.stepTime);
+            },
+            step: step
+        };
+    }
+}},{"componentId":"https:\u002F\u002Fzuixjs.github.io\u002Fzkit\u002Flib\u002Fcomponents\u002Fcontext_menu","controller":function (cp){
+    let menu;
+    let view;
+
+    cp.create = function() {
+        menu = cp.field('menu');
+        menu.css('bottom', -(menu.position().rect.height)+'px');
+        view = cp.view();
+        view.css('opacity', 0)
+            .hide()
+            .on('click', function() {
+                hideMenu();
+            })
+            .on('keydown', function(evt) {
+                evt = evt || window.event;
+                if (evt.keyCode === 27) {
+                    hideMenu();
+                }
+            });
+        zuix.load('@lib/controllers/gesture_helper', {
+            view: view,
+            on: {
+                'gesture:pan': function(e, tp) {
+                    if (!menu.hasClass('no-transition')) {
+                        menu.addClass('no-transition');
+                    }
+                    if (tp.shiftY > 0) {
+                        menu.css('bottom', -tp.shiftY + 'px');
+                    }
+                },
+                'gesture:release': function(e, tp) {
+                    menu.removeClass('no-transition');
+                    if (tp.velocity <= 0 && tp.direction === 'up') {
+                        menu.css('bottom', 0);
+                    } else if (tp.direction === 'down') {
+                        hideMenu();
+                    }
+                }
+            }
+        });
+        cp.expose('show', showMenu);
+        cp.expose('hide', hideMenu);
+    };
+
+    function showMenu() {
+        view.show();
+        // animation will not work without this delay =/
+        setTimeout(function() {
+            view.css('opacity', 1);
+            menu.css('bottom', 0)
+                .get().focus();
+        }, 100);
+        cp.trigger('open');
+    }
+
+    function hideMenu() {
+        view.one('transitionend', function() {
+                this.hide();
+            })
+            .css('opacity', 0);
+        menu.css('bottom', -(menu.position().rect.height)+'px');
+        cp.trigger('close');
+    }
+},"css":". {\n    position: fixed;\n    bottom:0;\n    left:0;\n    right: 0;\n    top: 0;\n    -ms-touch-action: none;\n    touch-action: none;\n    background: rgba(0,0,0,0.5);\n    z-index: 200;\n    -webkit-transition: opacity 0.25s ease-in-out;\n    -moz-transition: opacity 0.25s ease-in-out;\n    -ms-transition: opacity 0.25s ease-in-out;\n    -o-transition: opacity 0.25s ease-in-out;\n    transition: opacity 0.25s ease-in-out;\n}\n.menu {\n    outline: none !important;\n    margin-left: auto;\n    margin-right: auto;\n    left: 50%;\n    transform: translateX(-50%);\n    position: absolute;\n    width: 100%;\n    max-width: 420px;\n    background: white;\n    border: solid 1px rgba(0,0,0,0.1);\n    border-radius: 16px 16px 0 0;\n    box-shadow: 0 -5px 5px -5px #333;\n    -webkit-transition: bottom 0.25s ease-in-out;\n    -moz-transition: bottom 0.25s ease-in-out;\n    -ms-transition: bottom 0.25s ease-in-out;\n    -o-transition: bottom 0.25s ease-in-out;\n    transition: bottom 0.25s ease-in-out;\n}\nbutton {\n    width: 100%;\n    height:48px;\n    padding: 16px;\n    background: none;\n    border: none;\n}\nbutton span {\n    font-family: sans-serif, Helvetica;\n    font-size: 120%;\n    margin-left: 24px;\n}\nbutton i {\n    color: gray;\n    font-size: 140%;\n    margin-left: 8px;\n}\nbutton:hover {\n    background: rgba(0,0,0,0.1);\n}\n.no-transition {\n    -webkit-transition: none;\n    -moz-transition: none;\n    -ms-transition: none;\n    -o-transition: none;\n    transition: none;\n}\n","view":"\u003Cdiv data-ui-field=\"menu\" class=\"menu\" tabindex=\"0\"\u003E\u003C\u002Fdiv\u003E\n"},{"componentId":"https:\u002F\u002Fzuixjs.github.io\u002Fzkit\u002Flib\u002Fcontrollers\u002Fheader_auto_hide","controller":function (cp) {
+    let headerBar;
+    let footerBar;
+    let headerHeight = 0;
+    let footerHeight = 0;
+    cp.init = function() {
+        cp.options().css = false;
+        cp.options().html = false;
+    };
+    cp.create = function() {
+        // options parsing
+        let header = cp.options().header || cp.view().attr('data-o-header');
+        if (header != null) {
+            headerBar = zuix.field(header);
+        }
+        let footer = cp.options().footer || cp.view().attr('data-o-footer');
+        if (footer != null) {
+            footerBar = zuix.field(footer);
+        }
+        let height = cp.options().height || cp.view().attr('data-o-height');
+        if (height != null && !isNaN(height)) {
+            headerHeight = footerHeight = parseInt(height);
+            addHeaderStyle(); addFooterStyle();
+        }
+        // TODO: this can be optimized (do not replace CSS, skip if already exists)
+        const startTime = new Date().getTime();
+        zuix.load('@lib/controllers/scroll_helper', {
+            view: cp.view(),
+            on: {
+                'scroll:change': function(e, data) {
+                    if (data.event === 'scroll' && (new Date().getTime()-startTime > 1000)) {
+                        if (data.info.shift.y < 0) {
+                            // scrolling up
+                            hideBars();
+                        } else if (data.info.shift.y > 0) {
+                            // scrolling down
+                            showBars();
+                        }
+                    }
+                    cp.trigger('page:scroll', data);
+                }
+            }
+        });
+        cp.expose('show', showBars)
+            .expose('hide', hideBars);
+    };
+    function showBars() {
+        if (headerBar != null && headerBar.hasClass('header-collapse')) {
+            headerBar.removeClass('header-collapse')
+                .addClass('header-expand');
+        }
+        if (footerBar != null && footerBar.hasClass('footer-collapse')) {
+            footerBar.removeClass('footer-collapse')
+                .addClass('footer-expand');
+        }
+    }
+    function hideBars() {
+        if (headerBar != null && !headerBar.hasClass('header-collapse')) {
+            if (headerHeight === 0) {
+                headerHeight = headerBar.position().rect.height;
+                if (headerHeight > 0) {
+                    addHeaderStyle();
+                }
+            }
+            headerBar.removeClass('header-expand')
+                .addClass('header-collapse');
+        }
+        if (footerBar != null && !footerBar.hasClass('footer-collapse')) {
+            if (footerHeight === 0) {
+                footerHeight = footerBar.position().rect.height;
+                if (headerHeight > 0) {
+                    addFooterStyle();
+                }
+            }
+            footerBar.removeClass('footer-expand')
+                .addClass('footer-collapse');
+        }
+    }
+
+    function addHeaderStyle() {
+        zuix.$.appendCss('\n' +
+            '/* Header bar shrink/expand */\n' +
+            '@keyframes header-collapse-anim {\n' +
+            '  from { top: 0; }\n' +
+            '  to { top: -'+headerHeight+'px; }\n' +
+            '}\n' +
+            '@keyframes header-expand-anim {\n' +
+            '  from { top: -'+headerHeight+'px; }\n' +
+            '  to { top: 0; }\n' +
+            '}\n' +
+            '.header-collapse {\n' +
+            '  animation-fill-mode: forwards;\n' +
+            '  animation-name: header-collapse-anim;\n' +
+            '  animation-duration: 0.5s;\n' +
+            '  top: -'+headerHeight+'px;\n' +
+            '}\n' +
+            '.header-expand {\n' +
+            '  animation-fill-mode: forwards;\n' +
+            '  animation-name: header-expand-anim;\n' +
+            '  animation-duration: 0.5s;\n' +
+            '  top: 0px;\n' +
+            '}\n', null, 'onscroll_header_hide_show');
+    }
+    function addFooterStyle() {
+        zuix.$.appendCss('\n' +
+            '/* Footer bar shrink/expand */\n' +
+            '@keyframes footer-collapse-anim {\n' +
+            '  from { bottom: 0; }\n' +
+            '  to { bottom: -'+footerHeight+'px; }\n' +
+            '}\n' +
+            '@keyframes footer-expand-anim {\n' +
+            '  from { bottom: -'+footerHeight+'px; }\n' +
+            '  to { bottom: 0; }\n' +
+            '}\n' +
+            '.footer-collapse {\n' +
+            '  animation-fill-mode: forwards;\n' +
+            '  animation-name: footer-collapse-anim;\n' +
+            '  animation-duration: 0.5s;\n' +
+            '  bottom: -'+footerHeight+'px;\n' +
+            '}\n' +
+            '.footer-expand {\n' +
+            '  animation-fill-mode: forwards;\n' +
+            '  animation-name: footer-expand-anim;\n' +
+            '  animation-duration: 0.5s;\n' +
+            '  bottom: 0;\n' +
+            '}\n', null, 'zkit_onscroll_hide_show');
+    }
+}},{"componentId":"https:\u002F\u002Fzuixjs.github.io\u002Fzkit\u002Flib\u002Fcontrollers\u002Fscroll_helper","view":"\n\n        \u003Cdiv data-ui-load=\"pages\u002Fhome\u002Fitems_list\" data-o-rss=\"http:\u002F\u002Frss.cnn.com\u002Frss\u002Fedition.rss\" data-ui-loaded=\"false\"\u003E\u003C\u002Fdiv\u003E\n\n    ","css":null,"controller":function (cp) {
+    const scrollInfo = {
+        timestamp: 0,
+        size: {
+            width: 0,
+            height: 0
+        },
+        viewport: {
+            x: 0,
+            y: 0,
+            width: 0,
+            height: 0
+        }
+    };
+    let updateTimeout;
+    let watchList;
+    let watchCallback;
+    let scrollToEndTs = 0;
+
+    cp.init = function() {
+        cp.options().html = false;
+        cp.options().css = false;
+    };
+
+    cp.create = function() {
+        if (cp.view().get() === document.body) {
+            if (cp.options().throttle > 0) {
+                window.onscroll = throttle(scrollCheck, cp.options().throttle);
+            } else {
+                window.onscroll = scrollCheck;
+            }
+        } else {
+            if (cp.options().throttle > 0) {
+                cp.view().on('scroll', throttle(scrollCheck, cp.options().throttle));
+            } else {
+                cp.view().on('scroll', scrollCheck);
+            }
+        }
+        cp.expose('watch', function(filter, callback) {
+            setWatchList(filter, callback);
+            return cp.context;
+        });
+        cp.expose('scrollStart', function(duration) {
+            if (duration == null) duration = -1;
+            scrollTo(0, duration);
+            return cp.context;
+        }).expose('scrollEnd', function(duration) {
+            if (duration == null) duration = -1;
+            scrollTo(scrollInfo.size.height, duration);
+            return cp.context;
+        }).expose('scrollTo', function(to, duration) {
+            if (duration == null) duration = -1;
+            scrollTo(to, duration);
+            return cp.context;
+        }).expose('info', function() {
+            return scrollInfo;
+        });
+        // TODO: that's a temp hack to force measure at start
+        scrollTo(5, -1);
+        scrollTo(0, 200);
+    };
+
+    let frameSkipTs;
+    function scrollCheck() {
+        // TODO: implement code for horizontal scroll as well
+
+        if (updateTimeout != null) {
+            clearTimeout(updateTimeout);
+        }
+        const now = new Date().getTime();
+        if (now - scrollInfo.timestamp > 100) {
+            updateScrollInfo();
+        } else {
+            updateTimeout = setTimeout(function() {
+                updateScrollInfo();
+            }, 99);
+        }
+
+        if (now < scrollToEndTs && now-frameSkipTs < 66) {
+            return;
+        }
+        frameSkipTs = now;
+
+        const scrollable = cp.view().get();
+        const visibleClass = 'scroll-helper-visible';
+        if (watchList != null && watchCallback != null) {
+            watchList.each(function(i, el) {
+
+                // TODO: replace this code using the new "zuix.$(el).position()" method
+
+                const position = this.position();
+
+                let visible = false;
+                let tolerance = 0;
+                if (el.offsetParent === null) {
+                    // not attached yet.
+                    return false;
+                }
+                if (tolerance == null) tolerance = 0;
+
+                const r1 = {
+                    left: 0,
+                    top: 0,
+                    right: scrollInfo.viewport.width,
+                    bottom: scrollInfo.viewport.height,
+                    width: scrollInfo.viewport.width,
+                    height: scrollInfo.viewport.height
+                };
+                let r2 = el.getBoundingClientRect();
+                let parent = el.offsetParent;
+                while (parent !== null && parent !== scrollable) {
+                    const pr = parent.getBoundingClientRect();
+                    r2 = {
+                        left: r2.left + pr.left,
+                        top: r2.top + pr.top,
+                        right: r2.right + pr.left,
+                        bottom: r2.bottom + pr.top,
+                        width: r2.width,
+                        height: r2.height
+                    };
+                    parent = parent.offsetParent;
+                }
+
+                visible = !(r2.left > r1.right-tolerance ||
+                    r2.right < r1.left+tolerance ||
+                    r2.top > r1.bottom-tolerance ||
+                    r2.bottom < r1.top+tolerance);
+
+                position.frame = {
+                    dx: (r2.left+(r2.width/2)-r1.left)/r1.width,
+                    dy: (r2.top+(r2.height/2)-r1.top)/r1.height
+                };
+                position.visible = visible;
+
+                if (!visible && this.hasClass(visibleClass)) {
+                    this.removeClass(visibleClass);
+                    position.event = 'exit';
+                } else if (!visible) {
+                    position.event = 'off-scroll';
+                } else if (visible) {
+                    if (!this.hasClass(visibleClass)) {
+                        position.event = 'enter';
+                        this.addClass(visibleClass);
+                    } else position.event = 'scroll';
+                } else return;
+                watchCallback(this, position);
+            });
+        }
+    }
+
+    function setWatchList(filter, callback) {
+        if (filter != null) {
+            watchList = cp.view(filter);
+            watchCallback = callback;
+        } else {
+            watchList = null;
+            watchCallback = null;
+        }
+    }
+
+    function updateScrollInfo() {
+        const scrollable = cp.view().get();
+        const rect = scrollable.getBoundingClientRect();
+        const vp = {
+            top: rect.top,
+            right: rect.right,
+            bottom: rect.bottom,
+            left: rect.left,
+            width: rect.width,
+            height: rect.height,
+            x: rect.x,
+            y: rect.y
+        };
+        vp.y = -cp.view().get().scrollTop || (vp.y ? vp.y : 0);
+        vp.height = cp.view().get().scrollHeight || (vp.height ? vp.height : 0);
+        scrollInfo.size.width = vp.width;
+        scrollInfo.size.height = vp.height;
+        if (scrollable === document.body) {
+            scrollInfo.size.width = document.body.offsetWidth;
+            scrollInfo.size.height = document.body.offsetHeight;
+            scrollInfo.viewport.width = document.documentElement.clientWidth || scrollInfo.size.width;
+            scrollInfo.viewport.height = document.documentElement.clientHeight || scrollInfo.size.height;
+        } else {
+            scrollInfo.viewport.width = scrollable.offsetWidth;
+            scrollInfo.viewport.height = scrollable.offsetHeight;
+        }
+        scrollInfo.timestamp = new Date().getTime();
+        scrollInfo.shift = {
+            x: vp.x - scrollInfo.viewport.x,
+            y: vp.y - scrollInfo.viewport.y
+        };
+        scrollInfo.viewport.x = vp.x;
+        scrollInfo.viewport.y = vp.y;
+        const endScroll = scrollInfo.size.height+vp.y-scrollInfo.viewport.height;
+        if ((endScroll === 0 || vp.y === 0)) {
+            cp.trigger('scroll:change', {event: vp.y === 0 ? 'hit-top' : 'hit-bottom', info: scrollInfo});
+        } else {
+            cp.trigger('scroll:change', {event: 'scroll', info: scrollInfo});
+        }
+    }
+
+    function scrollTo(to, duration) {
+        if (to instanceof Element || to instanceof zuix.$.ZxQuery) {
+            to = zuix.$(to).position().y - scrollInfo.viewport.y;
+        }
+        if (duration === -1) {
+            return setScroll(to);
+        }
+        const currentTs = Date.now();
+        if (duration != null) {
+            scrollToEndTs = currentTs + duration;
+        }
+        duration = scrollToEndTs-currentTs;
+
+        const el = cp.view().get();
+        let scrollTop = 0;
+        if (el === document.body) {
+            scrollTop = (window.pageYOffset !== undefined)
+                ? window.pageYOffset
+                : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+        } else scrollTop = el.scrollTop;
+
+        const difference = to - scrollTop;
+        if (duration <= 0 || difference === 0) {
+            setScroll(to);
+            scrollCheck();
+            return;
+        }
+
+        const offset = scrollTop + (difference / duration * 33);
+        requestAnimationFrame(function() {
+            setScroll(offset);
+            scrollTo(to);
+        });
+    }
+
+    function setScroll(to) {
+        const el = cp.view().get();
+        if (el === document.body) {
+            document.documentElement.scrollTop = to;
+            document.body.scrollTop = to;
+        } else el.scrollTop = to;
+    }
+
+    function throttle(func, limit) {
+        let lastFunc = void 0;
+        let lastRan = void 0;
+        return function() {
+            const context = this;
+            const args = arguments;
+            if (!lastRan) {
+                func.apply(context, args);
+                lastRan = Date.now();
+            } else {
+                clearTimeout(lastFunc);
+                lastFunc = setTimeout(function() {
+                    if (Date.now() - lastRan >= limit) {
+                        func.apply(context, args);
+                        lastRan = Date.now();
+                    }
+                }, limit - (Date.now() - lastRan));
+            }
+        };
+    }
+}},{"componentId":"pages\u002Fhome\u002Fitems_list","view":"\u003Cdiv data-ui-field=\"list\" self=\"size-xxlarge center\" layout=\"rows stretch-center\" class=\"list\"\u003E\u003C\u002Fdiv\u003E\n","css":".list {\n  margin-top: 96px;\n  margin-bottom: 206px;\n}\n\n.card-wrapper {\n  margin: 0;\n  padding:8px;\n  max-width: 100%;\n  \u002F* min-height: 100px; this is causing strange behavior on mobile, like delayed loading?!? *\u002F\n  overflow: hidden;\n  font-family: Helvetica, sans-serif !important;\n}\n\n.info {\n  margin-left:4px;\n  margin-right:4px;\n}\n\n.card {\n  width: 100%;\n  position: relative;\n  max-width: 640px;\n  min-height: 200px;\n  padding: 12px;\n  padding-bottom: 24px;\n}\n.card i {\n  color: gray;\n  font-size: 200%;\n}\n.cover-wrapper {\n  cursor: pointer;\n  width: 100%;\n  border-radius: 12px;\n  padding-top: 75%;\n  position: relative;\n  overflow: hidden;\n  background-size: cover;\n  background: #f2f2f2 no-repeat center center;\n}\n.summary {\n  width: 100%;\n}\n.options {\n  color: dimgrey;\n}\n.options span {\n  font-size: 80%;\n}\n.options button {\n  width: 48px;\n  height: 48px;\n  padding-top: 4px;\n  background: rgba(50,50,50,0.01);\n  border: none;\n  border-radius: 24px;\n}\n.options button:hover {\n  background: rgba(0,0,0,0.1);\n}\n","controller":function (cp) {
+  const zx = zuix; // shorthand
+  let itemsList;
+
+  cp.create = function() {
+    let url = cp.view().attr('data-o-rss');
+    // Use a proxy to prevent CORS policy restrictions errors
+    url = '//cors-anywhere.herokuapp.com/'+url;
+    fetchList(url);
+  };
+
+  function refresh() {
+    const list = cp.field('list');
+    if (itemsList != null) {
+      zx.$.each(itemsList, function(i, item) {
+        const options = {
+          lazyLoad: true,
+          model: item
+        };
+        let el;
+        if (i < 5) {
+          // different layout for first 4 items (bigger)
+          el = zx.createComponent('pages/home/items_list/item', options).container();
+          // 2 columns layout
+          if (i < 2) {
+            el.setAttribute('self', 'size-1of2 lg-full md-full sm-full');
+          } else {
+            el.setAttribute('self', 'size-1of3 lg-half md-half sm-full');
+          }
+          el.setAttribute('class', 'card-wrapper'); // <-- will this work?
+        } else {
+          // "mini" layout for subsequent items
+          el = zx.createComponent('pages/home/items_list/item_mini', options).container();
+          // 4 columns layout
+          el.setAttribute('self', 'size-1of4 lg-half md-half sm-full');
+          el.setAttribute('class', 'card-wrapper mini'); // <-- will this work?
+        }
+        // center the list on wide screens
+        el.setAttribute('layout', 'column stretch-center');
+        list.append(el);
+      });
+      zuix.componentize();
+    }
+  }
+
+  // Download RSS feed
+  function fetchList(rssUrl) {
+    // CORS proxy https://cors-anywhere.herokuapp.com/
+    zx.$.ajax({
+      url: rssUrl,
+      success: function(res) {
+        itemsList = parseRss(res);
+        refresh();
+      },
+      error: function(err) {
+        // TODO: handle error
+      }
+    });
+  }
+
+  // Parse RSS feed and create a JSON object out of it
+  function parseRss(rssText) {
+    const items = [];
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(rssText, "text/xml");
+    let d = zx.$(doc);
+    d.find('channel > item').each(function(i, el){
+      const title = getText(this.find('title'));
+      const description = getText(this.find('description'));
+      const pubDate = getText(this.find('pubDate'));
+      const link = getText(this.find('link'));
+      const imageList = this.find('[medium="image"]');
+      if (title !== '') {
+        const images = [];
+        // parse images to a json list
+        imageList.each(function(i, el) {
+          images.push({
+            url: this.attr('url'),
+            width: this.attr('width'),
+            height: this.attr('height')
+          });
+        });
+        let cover;
+        if (i < 5 && images[3] != null) cover = images[3].url;
+        else if (i > 3 && images[4] != null) cover = images[4].url;
+        const date = pubDate; // TODO: format date
+        items.push({
+          title,
+          link,
+          cover,
+          date,
+          images
+        });
+      }
+    });
+    return items;
+  }
+
+  function getText(node) {
+    let text;
+    // if node is ZxQuery, then get underlying HTMLElement
+    if (node.length() > 0) node = node.get();
+    if (node != null && node.firstChild != null) {
+      // get rid of CDATA wrapper eventually
+      text = node.firstChild.nodeValue;
+    } else if (node != null) {
+      // get value as is
+      text = node.innerHTML;
+    }
+    return text;
+  }
+},"css_applied":true}]);
