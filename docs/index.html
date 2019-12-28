@@ -2,11 +2,10 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>HTML PWA</title>
+    <title>Syljesster 2019/2020</title>
     <meta name="description" content="HTML Progressive Web App made with zUIx.js">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,7 +47,7 @@
 
     <!-- import zUIx library (v 0.4.9-54) -->
     <script src="js/zuix.min.js"></script>
-    <script src="app.bundle.js"></script>
+    <script src="js/zuix-bundler.min.js"></script>
 
     <!-- main app script -->
     <script src="index.js" defer></script>
@@ -67,10 +66,10 @@
         <section data-ui-include="pages/home"></section>
 
         <!-- SEARCH -->
-        <section data-ui-include="pages/search"></section>
+        <section data-ui-include="pages/map"></section>
 
         <!-- NOTIFICATIONS -->
-        <section data-ui-include="pages/notifications"></section>
+        <section data-ui-include="pages/drinks"></section>
 
         <!-- ABOUT -->
         <section data-ui-include="pages/about" layout="column top-center"></section>
@@ -81,14 +80,15 @@
     <footer data-ui-include="layout/footer" data-ui-options="options.footerBar" data-ui-field="footer-bar"></footer>
 
     <!-- The DrawerLayout for side menu panel -->
-    <div data-ui-load="@lib/controllers/drawer_layout" data-ui-options="options.drawerLayout" class="drawer" draggable="false">
-        <!-- Add Navigation Drawer content -->
-        <div data-ui-include="shared/main_menu"></div>
+    <!-- <div data-ui-load="@lib/controllers/drawer_layout" data-ui-options="options.drawerLayout" class="drawer"
+    draggable="false"> -->
+    <!-- Add Navigation Drawer content -->
+    <!-- <div data-ui-include="shared/main_menu"></div> -->
     </div>
 
     <noscript>
-  Turn on JavaScript to access this site content.
-</noscript>
+    Turn on JavaScript to access this site content.
+  </noscript>
 
 </body>
 
