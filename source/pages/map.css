@@ -1,18 +1,42 @@
-/* .box {
-    position: relative;
-    padding-bottom: 10%;
-    padding-top: 25px;
-    height: 100%;
-    overflow: hidden;
-  }
-   */
-  .box iframe {
-    width:100%;
-    height:100%;
-    margin:0;
-    padding-top:20vw;
-    padding-bottom:10vw;
+/* .mapContainer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
 
-    position:absolute;
-  }
-  
+.mapContainer {
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
+    overflow: hidden;
+} */
+
+.mapContainer {
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 60%;
+    /* desired aspect ratio */
+    position: relative;
+}
+
+.googlemap {
+    top: 10%;
+    border: 0;
+    height: 50%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.tipsContainer {
+    border: 0;
+    height: 40%;
+    left: 0;
+    position: absolute;
+    margin: 10;
+    padding: 10;
+    top: 60%;
+    color: white;
+}

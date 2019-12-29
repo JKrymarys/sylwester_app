@@ -1,0 +1,16 @@
+.calendarContainer {
+    height: 0;
+    overflow: hidden;
+    /* padding-bottom: 80%; */
+    /* desired aspect ratio */
+    /* position: relative; */
+}
+
+.calendar {
+    top: 15%;
+    border: 0;
+    height: 70%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
